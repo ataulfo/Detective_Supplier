@@ -1,6 +1,6 @@
 
 .foo {
-  color:rgb(31, 32, 31);
+  color:rgb(245, 248, 245);
 font-weight: bold;
   width: 100px;
   height: 30px;
@@ -8,38 +8,43 @@ font-weight: bold;
   float:left;
   margin-left:30px;
   margin-right: 4px;
-  padding-right: 3px;
-  padding-left:4px;
+  padding-right: 42px;
+  
   padding-bottom: 20px;
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: 10px;
 }
 
-.situacao-ativo{color:rgb(8, 84, 224);font-weight: bold;font-style: italic}
-
-.situacao-ativo2{color:rgb(241, 90, 40);font-weight: bold;}
+.situacao-ativo{color:rgb(8, 84, 224);font-weight: bold;}
 .situacao-inativo{color:rgb(243, 16, 16);font-weight: bold;}
 
+
+td{background:blue;font-family: monospace;}
+
 .controle{text-align: center;}
-#colorido1{font-weight:bold;width:1140px;margin-left:220px;margin-bottom:0px;background: #2067ec}
+#colorido1{color:white;font-weight:bold;width:1367px;margin-top:-18px;margin-left:221px;margin-bottom:0px;background: #0649c5}
 
-#colorido2{width:1140px;margin-left:220px;margin-bottom:0px;background: #ddf115}
+#colorido2{width:1367px;margin-left:221px;margin-bottom:0px;background: #ddf115}
 
-#colorido3{width:1140px;margin-left:220px;margin-bottom:0px;background: #f4282b}
-#colorido4{width:1140px;margin-left:220px;margin-bottom:0px;background: #27e717}
+#colorido3{width:1367px;margin-left:221px;margin-bottom:0px;background: #f4282b}
+#colorido4{width:1367px;margin-left:221px;margin-bottom:0px;background: #27e717}
 
 
 .blue {
-  background: #2067ec;
+  background: #0649c5;
+  padding-right:10px;
 }
 
 .red {
-  background: #f4282b;
+  background: #bd0306;
+  padding-right:10px;
 }
 
 .yellow {
-  background: #ddf115;
+  background:#cad803;
+  padding-right: 10px;
 }
 .green{
- background: #27e717;
+ background: #11a504;
+ padding-right:10px;
 }

@@ -7,7 +7,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/config.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
-
+<title>Sistema Detective Supplier</title>
 </head>
 <body>
 <br/>
@@ -18,7 +18,7 @@
 <input type="submit" name="Pesquisar" class="botao-estilo" value="Pesquisar">
 <br>
 <br>
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-90px">
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-80px">
   <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi me-2" width="20" height="32"><use xlink:href="#bootstrap"/></svg>
     <span class="fs-4">PAINEL</span>
@@ -38,7 +38,7 @@
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="#" class="nav-link text-white">
+      <a href="lista_fornecedores.html" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
         Fornecedores
       </a>
@@ -62,50 +62,36 @@
   </div>
 
 <br/>
-<br>
+<br/>
 <div class="padrao">
-<div class="foo blue">Com Troca</div>
-<div class="foo green"> Bonificação</div>
-<div class="foo red">Sem Troca</div>
-<div class="foo yellow">Excessão</div>
+<div class="foo blue">COM TROCA</div>
+<div class="foo green">BONIFICAÇÃO</div>
+<div class="foo red"> SEM TROCA </div>
+<div class="foo yellow">EXCESSÃO</div>
 </div>
 <br>
 <br/>
-<div class="estado-tabela container">
-  <div class="row">
-<div class="col" title="ID">
-ID
-</div>
-    <div class="col" title="Nome do fornecedor">
-      Fornecedor
-    </div>
-    <div class="col" title="Caso o fornecedor queira recolher o produto">
-Recolhimento
+<table  class="estado-tabela table table-dark">
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">FORNECEDOR</th>
+              <th scope="col">RECOLHIMENTO</th>
+              <th scope="col">TROCA COND</th>
+              <th scope="col">TELA</th>
+              <th scope="col">PROCEDIMENTO</th>
+              <th scope="col">COMPRADOR</th>
+              <th scope="col">QUEM RECEBE</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+      </table>
 
-</div>
-    <div class="col" title="Condicional caso haja excessão">
-      Troca Mediante
-    </div>
-<div class="col" title="Está opção irá te direcionar para qual tela do sistema">
-Tela
-</div>
-<div class="col" title="Procedimento">
-Procedimento
 
-</div> 
-<div class="col" title="Comprador ligado ao fornecedor">
- Comprador
-</div>
-<div class="col" title="Quem irá receber o produto">
-Quem recebe
 
-</div>
-
-</div>
-
-</div>
-
-<div id="colorido1">1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Camil&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="colorido1">1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CAMIL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;Troca entre locais&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helthon Jhon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CD</div>
 
 <div id="colorido2">2  <br/></div>

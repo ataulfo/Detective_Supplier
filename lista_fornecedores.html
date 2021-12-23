@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta lang="pt-br">
+    <meta name="Autor" content="Vilagrant Ataulfo">
+    <link href="../diretorio_html/imagens/detective-16.png">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/config.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
+    <title>Lista de fornecedores</title>
+</head>
+<body>
+    <br/>
+<h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
+<span class="meuspan">PREVENÇÃO DE PERDAS</span>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-90px">
+  <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <svg class="bi me-2" width="20" height="32"><use xlink:href="#bootstrap"/></svg>
+    <span class="fs-4">PAINEL</span>
+  </a>
+  <hr>
+  <ul class=" nav nav-pills flex-column mb-auto">
+    <li class="selecionar dropdown-item">
+      <a href="cadastro.html" class="nav-link text-white" aria-current="page">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="cadastro.html"/></svg>
+        Cadastro
+      </a>
+    </li>
+    <li class="selecionar dropdown-item">
+      <a href="lista_compradores.html" class="nav-link text-white">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+        Compradores
+      </a>
+    </li>
+    <li class="selecionar dropdown-item">
+      <a href="#" class="nav-link text-white">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+        Fornecedores
+      </a>
+    </li>
+    
+  </ul>
+
+  <hr>
+  <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>Ataulfo</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        
+        <li><a class="dropdown-item" href="#">Configurações</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="login.html">Sair</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h4 class="titulo-lista-fornecedores">LISTA DE FORNECEDORES CADASTRADOS</h4>
+
+    <table id="tabela-fornecedores" class="table table-dark table-hover">
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">FORNECEDOR</th>
+              <th scope="col">ESTADO</th>
+              <th scope="col">RECOLHIMENTO</th>
+              <th scope="col">QUEM RECEBE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td> - </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td> - </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+              <td> - </td>
+            </tr>
+          </tbody>
+      </table>
+</body>
+</html>

@@ -15,7 +15,9 @@
 <br>
 <br>
 <br>
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-30px">
+<br>
+<br>
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-66px">
   <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi me-2" width="20" height="32"><use xlink:href="#bootstrap"/></svg>
     <span class="fs-4">PAINEL</span>
@@ -35,7 +37,7 @@
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="#" class="nav-link text-white">
+      <a href="lista_fornecedores.html" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
         Fornecedores
       </a>
@@ -60,22 +62,23 @@
 
 <br/>
 
-<form id="input-cadastro">
+<form id="input-cadastro" action="back-sistema/cadastrar-fornecedor.php" method="post">
   <fieldset>
 <legend>Cadastro Fornecedor</legend><br/><br/>
+
 Fornecedor: <input type="text" name="FORNECEDOR" maxlength="20" autofocus="on">
 <br/>
 <br/>
-Comprador: <select>
-<option name="COMP_MARCIO"   value="1">MARCIO</option>
-<option name="COMP_HELTON"   value="2">HELTON JHON</option>
-<option name="COMP_LEONARDO" value="3">LEONARDO</option>
-<option name="COMP_PABLO"    value="4">PABLO</option>
-<option name="COMP_THAYS"    value="5">THAYS</option>
+Comprador: <select name="COMPRADOR">
+<option name="COMP01"    value="1">MARCIO</option>
+<option name="COMP02"    value="2">HELTON JHON</option>
+<option name="COMP03"    value="3">LEONARDO</option>
+<option name="COMP04"    value="4">PABLO</option>
+<option name="COMP05"    value="5">THAYS</option>
 </select>
 <br/>
 <br/>
-Estado: <select>
+Estado: <select name="TROCA">
 <option name="COM_TROCA"   value="1">COM TROCA</option>
 <option name="SEM_TROCA"   value="2">SEM TROCA</option>
 <option name="BONIFICACAO" value="3">BONIFICAÇÃO</option>
@@ -87,21 +90,21 @@ Troca Mediante:
 <input type="text" disabled="on" name="TROCA_MEDIANTE">
 <br/>
 <br/>
-Recolhimento: <select>
-<option>SIM</option>
-<option>NÃO</option>    
+Recolhimento: <select name="STATUS_RECOLHIMENTO">
+<option value="1">SIM</option>
+<option value="0">NÃO</option>    
 </select>
 <br/>
 <br/>
 Tela:
 <br/>
-<input type="radio" id="Troca" name="F">
+<input type="radio" id="teste" name="STATUS_TELA" value="1" checked>
 <label for="Troca">Troca entre locais</label><br/>
-<input type="radio" id="Movimentacao"name="F">
+<input type="radio" id="teste"name="status" value="2">
 <label for="Movimentacao">Movimentação Estoque</label><br/><br/>
-Quem recebe: <select>
-<option>CD</option>
-<option>FORNECEDOR LOCAL</option>
+Quem recebe: <select name="QUEM_RECEBE">
+<option value="1">CD</option>
+<option value="2">FORNECEDOR LOCAL</option>
 </select>
 <br/>
 <br/>
