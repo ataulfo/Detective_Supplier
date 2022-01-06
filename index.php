@@ -14,9 +14,11 @@
 <h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
 <span class="meuspan">PREVENÇÃO DE PERDAS</span>
 <br>
+<form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
 <input type="search" name="pesquisar" placeholder="Nome do fornecedor" autofocus="on"> 
-<input type="submit" name="Pesquisar" class="botao-estilo" value="Pesquisar">
-<br>
+<input type="submit" name="Botao-Pesquisar" class="botao-estilo" value="Pesquisar">
+</form>
+
 <br>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-80px">
   <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -161,7 +163,15 @@ $conectar = mysqli_connect($server,$usuario,$senha,$bd);
 $resultado = mysqli_query($conectar,$sql);
 //$contagem = 0;
 
-while($contagem = mysqli_fetch_array($resultado)):
+$pesquisar = $_POST['pesquisar'];
+
+$sql2 = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR = '$pesquisar'";
+$teste_resultado = mysqli_query($conectar,$sql2);
+
+if(isset($_POST['Botao-Pesquisar'])):
+
+
+while($contagem = mysqli_fetch_array($teste_resultado)):
 if($contagem['ESTADO'] == 1):
   echo '<div class="colorido1">'.
 $contagem['ID'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
@@ -240,6 +250,7 @@ $contagem['QUEM_RECEBE'];
 echo '</div>'.'<br/>';
 endif;
 endwhile;
+endif;
 
 
 ?>
