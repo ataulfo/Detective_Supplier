@@ -6,6 +6,7 @@
 <link href="../diretorio_html/imagens/detective-16.png">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/config.css" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
 </head>
 <body>
@@ -49,11 +50,6 @@
           -26 -30 l-3 -28 81 0 81 0 -3 28 c-2 19 -9 28 -25 30 -26 4 -28 14 -11 41 9
           15 9 25 0 45 -16 37 -68 37 -84 0z"/>
           </g>
-
-
-
-
-
 
 
 
@@ -104,9 +100,6 @@
 
 
 
-
-
-
         </svg>
         Fornecedores
       </a>
@@ -135,7 +128,7 @@
   <fieldset>
 <legend>Cadastro Fornecedor</legend><br/><br/>
 
-Fornecedor: <input type="text" name="FORNECEDOR" maxlength="20" autofocus="on">
+Fornecedor: <input type="text" name="FORNECEDOR" maxlength="20" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSTUVXZabcdefghijlmnopqrstuvxz' ']+$">
 <br/>
 <br/>
 Comprador: <select name="COMPRADOR">
@@ -156,7 +149,7 @@ Estado: <select name="TROCA" id="estado_troca">
 <br/>
 <br>
 Troca Mediante: 
-<input type="text" disable="1" id="estado_input" name="TROCA_MEDIANTE">
+<input type="text" maxlenght="20" id="estado_input" name="TROCA_MEDIANTE">
 <br/>
 <br/>
 Recolhimento: <select name="STATUS_RECOLHIMENTO">
@@ -184,6 +177,7 @@ QUEM RECEBE:
 </fieldset>
 </form>
 <script src="js/arquivo.js"></script>
+
 <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
