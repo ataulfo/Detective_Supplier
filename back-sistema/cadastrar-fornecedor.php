@@ -9,7 +9,8 @@ $STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"];
 $tela = $_POST['STATUS_TELA'];
 $QUEM_RECEBE = $_POST['QUEM_RECEBE']; 
 
-    echo 'FORNECEDOR '.strtoupper($NOME_FORNECEDOR).'<br>';
+    echo 'FORNECEDOR '.ucfirst($NOME_FORNECEDOR).'<br>';
+    
 
 if($_POST["COMPRADOR"] == '1'):
         echo "COMPRADOR MARCIO";
@@ -45,16 +46,16 @@ echo '<br>';
                 endif;
 echo '<br>';
 if($_POST['STATUS_RECOLHIMENTO'] == '1'):
-    echo "RECOLHIMENTO SIM";
+    echo "SIM";
     elseif($_POST['STATUS_RECOLHIMENTO'] == '0'):
-        echo "RECOLHIMENTO NÃO";
+        echo "NÃO";
     endif;
 
     echo '<br>';
     if($_POST['STATUS_TELA'] == '1'):
-        echo "TELA TROCA ENTRE LOCAIS";
+        echo "TROCA ENTRE LOCAIS";
         elseif($_POST['STATUS_TELA'] =='2'):
-            echo "TELA MOVIMENTAÇÃO";
+            echo "MOVIMENTAÇÃO";
         endif; 
 echo "<br>";
         if($_POST['QUEM_RECEBE'] == '1'):
