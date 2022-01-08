@@ -34,7 +34,7 @@
   <hr>
   <ul class=" nav nav-pills flex-column mb-auto">
     <li class="selecionar dropdown-item">
-      <a href="cadastro.html" class="nav-link text-white" aria-current="page">
+      <a href="cadastro.php" class="nav-link text-white" aria-current="page">
         <svg class="bi me-2" width="32" height="32">
           <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
           fill="#000000" stroke="none">
@@ -124,60 +124,106 @@
 
 <br/>
 
-<form id="input-cadastro" action="back-sistema/cadastrar-fornecedor.php" method="post">
+<form id="input-cadastro" action="<?php $SERVER['PHP_SELF'];?>" method="post">
   <fieldset>
 <legend>Cadastro Fornecedor</legend><br/><br/>
 
-Fornecedor: <input type="text" name="FORNECEDOR" maxlength="20" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSTUVXZabcdefghijlmnopqrstuvxz' ']+$">
+Fornecedor: <input type="text" name="FORNECEDOR" maxlength="12" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSTUVXZabcdefghijlmnopqrstuvxz' ']+$">
 <br/>
 <br/>
 Comprador: <select name="COMPRADOR">
-<option name="COMP01"    value="1">MARCIO</option>
-<option name="COMP02"    value="2">HELTON JHON</option>
-<option name="COMP03"    value="3">LEONARDO</option>
-<option name="COMP04"    value="4">PABLO</option>
-<option name="COMP05"    value="5">THAYS</option>
+<option name="COMP01"    value="MARCIO">MARCIO</option>
+<option name="COMP02"    value="HELTON JHON">HELTON JHON</option>
+<option name="COMP03"    value="LEONARDO">LEONARDO</option>
+<option name="COMP04"    value="PABLO">PABLO</option>
+<option name="COMP05"    value="THAYS">THAYS</option>
 </select>
 <br/>
 <br/>
-Estado: <select name="TROCA" id="estado_troca">
+Estado: <select name="ESTADO_TROCA" id="estado_troca">
 <option name="COM_TROCA"   value="1">COM TROCA</option>
 <option name="SEM_TROCA"   value="2">SEM TROCA</option>
-<option name="BONIFICACAO" value="3">BONIFICAÇÃO</option>
-<option name="EXCESSAO"    value="4">EXCESSAO</option>    
+<option name="EXCESSAO"    value="3">EXCESSAO</option> 
+<option name="BONIFICACAO" value="4">BONIFICAÇÃO</option>
+   
 </select>
 <br/>
 <br>
 Troca Mediante: 
-<input type="text" maxlenght="20" id="estado_input" name="TROCA_MEDIANTE">
+<input type="text" maxlenght="12" id="estado_input" name="TROCA_MEDIANTE">
 <br/>
 <br/>
 Recolhimento: <select name="STATUS_RECOLHIMENTO">
-<option value="1">SIM</option>
-<option value="0">NÃO</option>    
+<option value="Sim">SIM</option>
+<option value="Não">NÃO</option>    
 </select>
 <br/>
 <br/>
 Tela:
 <br/>
-<input type="radio" id="teste" name="STATUS_TELA" value="1" checked>
+<input type="radio" id="teste" name="STATUS_TELA" value="Troca entre locais" checked>
 <label for="Troca">TROCA ENTRE LOCAIS</label><br/>
-<input type="radio" id="teste" name="STATUS_TELA" value="2">
+<input type="radio" id="teste" name="STATUS_TELA" value="Movimentação">
 <label for="Movimentacao">MOVIMENTAÇÃO ESTOQUE</label><br/><br/>
 QUEM RECEBE:
 
 <select name="QUEM_RECEBE">
-<option value="1">CD</option>
-<option value="2">FORNECEDOR LOCAL</option>
-<option value="3">SEM RECEBIMENTO</option>
+<option value="CD">CD</option>
+<option value="F/L">FORNECEDOR LOCAL</option>
+<option value="S/R">SEM RECEBIMENTO</option>
 </select>
 <br/>
 <br/>
-<input type="submit" value="salvar" class="botao-estilo">
+<input type="submit" value="Adicionar" name="Adicionar" class="botao-estilo">
 </fieldset>
 </form>
 <script src="js/arquivo.js"></script>
-
 <script src="js/bootstrap.bundle.min.js"></script>
+
+<?php
+require_once 'back-sistema/conexao.php';
+
+$NOME_FORNECEDOR     = ucfirst($_POST['FORNECEDOR']); //OK
+$STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"]; //OK
+$TROCA_COND          = $_POST['TROCA_MEDIANTE'];//OK
+$STATUS_TELA         = $_POST['STATUS_TELA']; //OK
+$COMPRADOR           = $_POST["COMPRADOR"];//OK
+$ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
+$QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
+
+if(isset($_POST['Adicionar'])):
+if(empty($TROCA_COND)):
+$TROCA_COND = '-';
+endif;
+
+$sql = "INSERT INTO Fornecedor_lista(`NOME_FORNECEDOR`, `RECOLHIMENTO`, `TROCA_COND`, `TELA`, `COMPRADOR`, `QUEM_RECEBE`, `ESTADO`)VALUES('$NOME_FORNECEDOR', '$STATUS_RECOLHIMENTO', '$TROCA_COND', '$STATUS_TELA', '$COMPRADOR','$QUEM_RECEBE','$ESTADO_TROCA');";
+$Inserir_dados = mysqli_query($conectar,$sql);
+
+if($Inserir_dados == true):
+  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
+  echo '<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">';
+  echo '<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>';
+  echo '</symbol>';
+  echo '<div class="alert alert-success d-flex align-items-center" role="alert">';
+  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>';
+  echo '<div>';
+  echo "Dados do fornecedor $NOME_FORNECEDOR adicionados com sucesso!";
+  echo '</div>';
+else:
+  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
+  echo '<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">';
+  echo '<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>';
+  echo '</symbol>';
+  echo '<div class="alert alert-danger d-flex align-items-center" role="alert">';
+  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
+  echo '<div>';
+  echo "Erro na gravação do fornecedor $NOME_FORNECEDOR";
+  echo '</div>';
+
+endif;
+endif;
+?>
+
+
 </body>
 </html>

@@ -9,7 +9,7 @@ $STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"];
 $tela = $_POST['STATUS_TELA'];
 $QUEM_RECEBE = $_POST['QUEM_RECEBE']; 
 
-    echo 'FORNECEDOR '.ucfirst($NOME_FORNECEDOR).'<br>';
+echo 'FORNECEDOR '.ucfirst($NOME_FORNECEDOR).'<br>';
     
 
 if($_POST["COMPRADOR"] == '1'):

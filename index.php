@@ -34,7 +34,7 @@
   <hr>
   <ul class=" nav nav-pills flex-column mb-auto">
     <li class="selecionar dropdown-item">
-      <a href="cadastro.html" class="nav-link text-white" aria-current="page">
+      <a href="cadastro.php" class="nav-link text-white" aria-current="page">
         <svg class="bi me-2" width="32" height="32">
 
 
@@ -152,14 +152,7 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
 
 <?php
 
-$server  = 'localhost';
-$usuario = 'ataulfo';
-$senha   = '123321';
-$bd      = 'Banco_teste';
-
-$conectar = mysqli_connect($server,$usuario,$senha,$bd);
-
-//$contagem = 0;
+require_once 'back-sistema/conexao.php';
 
 $pesquisar = $_POST['pesquisar'];
 
@@ -173,7 +166,9 @@ if(isset($_POST['Botao-Pesquisar'])):
 //Verifica se retornará o numéro de linhas
 //Verificação util
   if(mysqli_num_rows($consulta_sql_index) == 0):
-    echo '<div class="colorido5">'.'Error, registro não encontrado';
+    echo '<div class="colorido5">'
+    .'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
+    'Error, registro não encontrado';
   else:
 
 while($contagem = mysqli_fetch_array($consulta_sql_index)):
