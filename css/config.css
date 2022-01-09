@@ -1,5 +1,5 @@
 input[type=search]{margin-left:220px;margin-bottom:-73px;margin-top:55px; padding-right:15px}
-input[type="text"]{text-transform: uppercase;width:300px;}
+input[type="text"]{text-transform: capitalize;width:300px;}
 input[type="email"],[type="password"]{margin-left:510px}
 #input-cadastro{width:400px;margin-left:480px;margin-top: -370px;margin-bottom: 120px;font-weight: bold;}
 
@@ -8,6 +8,9 @@ input[type="email"],[type="password"]{margin-left:510px}
 
 
 #texto-titulo{margin:3px;padding-top: 2px;}
+#pesquisar_estilo{text-transform: capitalize;}
+
+.redireciona{cursor: pointer;}
 
 .meuspan{margin-left:4px;padding:4px;background:linear-gradient(rgb(148, 147, 147),rgb(10, 9, 9));color:white;font-weight: bold;}
 .botao-estilo{background:linear-gradient(#ccc,rgb(34, 34, 34));width:150px;font-weight: bold;border-radius: 15px;color:white;}

@@ -55,7 +55,7 @@
 
 
         </svg>
-        Cadastro
+        Alteração dos dados
       </a>
     </li>
     <li class="selecionar dropdown-item">
@@ -169,17 +169,9 @@ QUEM RECEBE:
 
 <select name="QUEM_RECEBE">
 <option value="CD">CD</option>
-<option value="F/L">F/L</option>
-<option value="S/R">S/R</option>
+<option value="F/L">FORNECEDOR LOCAL</option>
+<option value="S/R">SEM RECEBIMENTO</option>
 </select>
-<details>
- <h5><span style="color:blue;">CD</span></h5>
- <p><span style="color:blue;"> Centro de Distribuição</span></p> 
- <h5><span style="color:green;">F/L</span></h5>
- <p><span style="color:green;"> Fornecedor Local </span></p>
- <h5><span style="color:red"> S/R </span></h5>
- <p><span style="color:red">Sem Recebimento </span></p>
-</details>
 <br/>
 <br/>
 <input type="submit" value="Adicionar" name="Adicionar" class="botao-estilo">

@@ -1,9 +1,6 @@
 
 
-document.getElementById('estado_troca').onclick = function(){
 
-var recebe = document.getElementById('estado_troca').getAttribute('value');
+let recebe = document.getElementsByClassName('redireciona');
 
-    console.log(recebe)
-
-}
+recebe.namedItem('href="altera_dados.php"');

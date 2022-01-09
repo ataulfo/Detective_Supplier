@@ -15,7 +15,7 @@
 <span class="meuspan">PREVENÇÃO DE PERDAS</span>
 <br>
 <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
-<input type="search" name="pesquisar" placeholder="Nome do fornecedor" autofocus="on"> 
+<input type="search" name="pesquisar" id="pesquisar_estilo" placeholder="Nome do fornecedor" autofocus="on"> 
 <input type="submit" name="Botao-Pesquisar" class="botao-estilo" value="Pesquisar">
 </form>
 
@@ -81,7 +81,7 @@ fill="#000000" stroke="none">
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="lista_fornecedores.html" class="nav-link text-white">
+      <a href="lista_fornecedores.php" class="nav-link text-white">
         <svg class="bi me-2" width="32" height="32">
 
 
@@ -155,8 +155,8 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
 require_once 'back-sistema/conexao.php';
 
 $pesquisar = $_POST['pesquisar'];
-
-$sql = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR = '$pesquisar'";
+//SELECT * FROM `Fornecedor_lista` WHERE NOME_FORNECEDOR like 'C%';
+$sql = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR like '$pesquisar%'";
 $consulta_sql_index = mysqli_query($conectar,$sql);
 
 
@@ -174,7 +174,7 @@ if(isset($_POST['Botao-Pesquisar'])):
 while($contagem = mysqli_fetch_array($consulta_sql_index)):
 
 if($contagem['ESTADO'] == 1):
-      echo '<div class="colorido1">'.
+      echo '<div class="colorido1 redireciona">'.
       $contagem['ID'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       '&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       $contagem['NOME_FORNECEDOR'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
@@ -194,7 +194,7 @@ if($contagem['ESTADO'] == 1):
       echo '</div>'.'<br/>';
 
 elseif($contagem['ESTADO'] == 2):
-      echo '<div class="colorido2">'.
+      echo '<div class="colorido2 redireciona">'.
       $contagem['ID'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       '&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       $contagem['NOME_FORNECEDOR'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
@@ -212,9 +212,10 @@ elseif($contagem['ESTADO'] == 2):
       '&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       $contagem['QUEM_RECEBE'];
       echo '</div>'.'<br/>';
+      
 
 elseif($contagem['ESTADO'] == 3):
-      echo '<div class="colorido3">'.
+      echo '<div class="colorido3 redireciona">'.
       $contagem['ID'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       '&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       $contagem['NOME_FORNECEDOR'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
@@ -231,9 +232,10 @@ elseif($contagem['ESTADO'] == 3):
       '&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       $contagem['QUEM_RECEBE'];
       echo '</div>'.'<br/>';
+      echo '</a>';
 
 elseif($contagem['ESTADO'] == 4):
-      echo '<div class="colorido4">'.
+      echo '<div class="colorido4 redireciona">'.
       $contagem['ID'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       '&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
       $contagem['NOME_FORNECEDOR'].'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
