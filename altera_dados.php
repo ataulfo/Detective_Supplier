@@ -133,12 +133,12 @@ endif;
 endif;
 
 ?>
-<script>
-function redireciona(NOME){
+
+</script>
 
 
-}
-</script> 
 <script src="js/arquivo.js"></script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

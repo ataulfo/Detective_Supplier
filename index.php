@@ -123,44 +123,42 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
 <br/>
 <div class="padrao">
 <div class="foo blue">COM TROCA</div>
-<div class="foo green">BONIFICADO</div>
+<div class="foo yellow">BONIFICADO</div>
 <div class="foo red"> SEM TROCA </div>
-<div class="foo yellow">EXCESSÃO</div>
+
 </div>
 <br>
 <br/>
-<table  class="estado-tabela table table-dark">
-        <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">FORNECEDOR</th>
-              <th scope="col">RECOLHIMENTO</th>
-              <th scope="col">TROCA COND</th>
-              <th scope="col">TELA</th>  
-              <th scope="col">PROCEDIMENTO</th>
-              <th scope="col">COMPRADOR</th>
-              <th scope="col">QUEM RECEBE</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-      </table>
+<br/>
+
+<div class='minhaVIEW redireciona'>
+<div class="container">
+  <div class="row row-cols-7">
+    <div class="col">ID</div>
+    <div class="col">FORNECEDOR</div>
+    <div class="col">RECOLHIMENTO</div>
+    <div class="col">CONDIÇÃO</div>
+    <div class="col">TELA</div>
+    <div class="col">COMPRADOR</div>
+    <div class="col">QUEM RECEBE</div>
+</div>
+  </div>
+</div>
 
 <?php
 
 require_once 'back-sistema/conexao.php';
 
-$pesquisar = $_POST['pesquisar'];
-//SELECT * FROM `Fornecedor_lista` WHERE NOME_FORNECEDOR like 'C%';
-$sql = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR like '$pesquisar%'";
-$consulta_sql_index = mysqli_query($conectar,$sql);
 
 if(isset($_POST['Botao-Pesquisar'])):
 
+    $pesquisar = $_POST['pesquisar'];
+    $sql = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR like '$pesquisar%'";
+    $consulta_sql_index = mysqli_query($conectar,$sql);
+
 //Verifica se retornará o numéro de linhas
 //Verificação util
-  if(mysqli_num_rows($consulta_sql_index) == 0):
+  if(mysqli_num_rows($consulta_sql_index) == 0 || $pesquisar == ''):
     echo '<div class="colorido5">'
     .'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.'&nbsp;'.
     'Error, registro não encontrado';
@@ -170,31 +168,42 @@ while($contagem = mysqli_fetch_array($consulta_sql_index)):
  // redireciona1(`$contagem[NOME_FORNECEDOR]`);
 if($contagem['ESTADO'] == 1):
       echo"<div class='colorido1 redireciona' onclick='redireciona(`$contagem[NOME_FORNECEDOR]`);'>".
-           "<pre> ".$contagem['ID']."         ".$contagem['NOME_FORNECEDOR']."                                   ".$contagem['RECOLHIMENTO']."                                          ".
-      $contagem['TROCA_COND']."           ".$contagem['TELA']."                                                       ".$contagem['COMPRADOR']."                          ".
-      $contagem['QUEM_RECEBE']."</pre>";
-      echo '</div>'.'<br/>';
+      '<div class="container">'.
+      '<div class="row row-cols-7">'.
+      '<div class="col">'.$contagem['ID'].'</div>'.
+      '<div class="col">'.$contagem['NOME_FORNECEDOR'].'</div>'.
+      '<div class="col">'.$contagem['RECOLHIMENTO'].'</div>'.
+      '<div class="col">'.$contagem['TROCA_COND'].'</div>'.
+      '<div class="col">'.$contagem['TELA'].'</div>'.
+      '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
+      '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
+      echo '</div>'.'</div>'.'</div>'.'<br/>';
 
 elseif($contagem['ESTADO'] == 2):
       echo '<div class="colorido2 redireciona" onclick="redireciona();">'.
-           "<pre> ".$contagem['ID']."         ".$contagem['NOME_FORNECEDOR']."                                   ".$contagem['RECOLHIMENTO']."                                          ".
-      $contagem['TROCA_COND']."           ".$contagem['TELA']."                                                       ".$contagem['COMPRADOR']."                          ".
-      $contagem['QUEM_RECEBE']."</pre>";
-      echo '</div>'.'<br/>';
+      '<div class="container">'.
+      '<div class="row row-cols-7">'.
+      '<div class="col">'.$contagem['ID'].'</div>'.
+      '<div class="col">'.$contagem['NOME_FORNECEDOR'].'</div>'.
+      '<div class="col">'.$contagem['RECOLHIMENTO'].'</div>'.
+      '<div class="col">'.$contagem['TROCA_COND'].'</div>'.
+      '<div class="col">'.$contagem['TELA'].'</div>'.
+      '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
+      '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
+      echo '</div>'.'</div>'.'</div>'.'<br/>';
       
 elseif($contagem['ESTADO'] == 3):
       echo '<div class="colorido3 redireciona" onclick="redireciona();">'.
-      "<pre> ".$contagem['ID']."         ".$contagem['NOME_FORNECEDOR']."                                   ".$contagem['RECOLHIMENTO']."                                          ".
-      $contagem['TROCA_COND']."           ".$contagem['TELA']."                                                       ".$contagem['COMPRADOR']."                          ".
-      $contagem['QUEM_RECEBE']."</pre>";
-      echo '</div>'.'<br/>';
-
-elseif($contagem['ESTADO'] == 4):
-      echo '<div class="colorido4 redireciona" onclick="redireciona();">'.
-      "<pre> ".$contagem['ID']."         ".$contagem['NOME_FORNECEDOR']."                                   ".$contagem['RECOLHIMENTO']."                                          ".
-      $contagem['TROCA_COND']."           ".$contagem['TELA']."                                                       ".$contagem['COMPRADOR']."                          ".
-      $contagem['QUEM_RECEBE']."</pre>";
-      echo '</div>'.'<br/>';
+      '<div class="container">'.
+      '<div class="row row-cols-7">'.
+      '<div class="col">'.$contagem['ID'].'</div>'.
+      '<div class="col">'.$contagem['NOME_FORNECEDOR'].'</div>'.
+      '<div class="col">'.$contagem['RECOLHIMENTO'].'</div>'.
+      '<div class="col">'.$contagem['TROCA_COND'].'</div>'.
+      '<div class="col">'.$contagem['TELA'].'</div>'.
+      '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
+      '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
+      echo '</div>'.'</div>'.'</div>'.'<br/>';
 
 endif;
 endwhile;

@@ -208,8 +208,6 @@ $TROCA_COND = 'Nenhum';
 endif;
 if(empty($NOME_FORNECEDOR)):
 
-
-
 endif;
 $sql_consulta_verificacao = "SELECT NOME_FORNECEDOR FROM Fornecedor_lista where NOME_FORNECEDOR = '$NOME_FORNECEDOR'";
 $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao);
