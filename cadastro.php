@@ -128,7 +128,7 @@
   <fieldset>
 <legend>Cadastro Fornecedor</legend><br/><br/>
 
-Fornecedor: <input type="text" name="FORNECEDOR" maxlength="12" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSTUVXZabcdefghijlmnopqrstuvxz' ']+$">
+Fornecedor: <input type="text" name="FORNECEDOR" maxlength="25" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSTÇUVXZabcdefghijlmnopqrstuvxzç' ']+$">
 <br/>
 <br/>
 Comprador: <select name="COMPRADOR">
@@ -143,13 +143,12 @@ Comprador: <select name="COMPRADOR">
 Estado: <select name="ESTADO_TROCA" id="estado_troca">
 <option name="COM_TROCA"   value="1">COM TROCA</option>
 <option name="SEM_TROCA"   value="2">SEM TROCA</option>
-<option name="EXCESSAO"    value="3">EXCESSAO</option> 
-<option name="BONIFICACAO" value="4">BONIFICAÇÃO</option>
+<option name="EXCESSAO"    value="3">BONIFICAÇÃO</option> 
    
 </select>
 <br/>
 <br>
-Troca Mediante: 
+Condição De Troca: 
 <input type="text" maxlenght="15" id="estado_input" name="TROCA_MEDIANTE">
 <br/>
 <br/>
@@ -161,7 +160,7 @@ Recolhimento: <select name="STATUS_RECOLHIMENTO">
 <br/>
 Tela:
 <br/>
-<input type="radio" id="teste" name="STATUS_TELA" value="Troca entre locais" checked>
+<input type="radio" id="teste" name="STATUS_TELA" value="Transf / Locais" checked>
 <label for="Troca">TROCA ENTRE LOCAIS</label><br/>
 <input type="radio" id="teste" name="STATUS_TELA" value="Movimentação">
 <label for="Movimentacao">MOVIMENTAÇÃO ESTOQUE</label><br/><br/>

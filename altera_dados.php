@@ -12,14 +12,15 @@
 <body>
     
 
-<form id="id-altera_dados" action="<?php $SERVER['PHP_SELF'];?>" method="post">
+<form id="form-altera_dados" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
 <fieldset>
 <legend>Alterar dados do Fornecedor</legend><br/><br/>
-
-Fornecedor: <input type="text" name="FORNECEDOR" class="teste_classe" id="pesquisar_estilo" maxlength="12" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSTUVXZabcdefghijlmnopqrstuvxz' ']+$">
+ID: <input type="text" name="ID" id="input-ID-alterar" disabled>
+<br/>
+Fornecedor: <input type="text" name="FORNECEDOR" class="teste_classe" id="pesquisar_estilo" maxlength="25" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSTUVXZabcdefghijlmnopqrstuvxz' ']+$">
 <br/>
 <br/>
-Comprador: <select name="COMPRADOR">
+Comprador: <select name="COMPRADOR" id="Status_Comprador">
 <option name="COMP01"    value="Marcio">MARCIO</option>
 <option name="COMP02"    value="Helton Jhon">HELTON JHON</option>
 <option name="COMP03"    value="Leonardo">LEONARDO</option>
@@ -28,20 +29,19 @@ Comprador: <select name="COMPRADOR">
 </select>
 <br/>
 <br/>
-Estado: <select name="ESTADO_TROCA" id="estado_troca">
+Estado: <select name="ESTADO_TROCA" id="Estado_troca">
 <option name="COM_TROCA"   value="1">COM TROCA</option>
 <option name="SEM_TROCA"   value="2">SEM TROCA</option>
-<option name="EXCESSAO"    value="3">EXCESSAO</option> 
-<option name="BONIFICACAO" value="4">BONIFICAÇÃO</option>
+<option name="EXCESSAO"    value="3">BONIFICAÇÃO</option> 
    
 </select>
 <br/>
 <br>
-Troca Mediante: 
-<input type="text" maxlenght="15" id="estado_input" name="TROCA_MEDIANTE">
+Condição da Troca: 
+<input type="text" maxlenght="15" id="Estado_condicao" name="TROCA_MEDIANTE">
 <br/>
 <br/>
-Recolhimento: <select name="STATUS_RECOLHIMENTO">
+Recolhimento: <select name="STATUS_RECOLHIMENTO" id="Estado_recolhimento">
 <option value="Sim">SIM</option>
 <option value="Não">NÃO</option>    
 </select>
@@ -49,13 +49,13 @@ Recolhimento: <select name="STATUS_RECOLHIMENTO">
 <br/>
 Tela:
 <br/>
-<input type="radio" id="teste" name="STATUS_TELA" value="Troca entre locais" checked>
-<label for="Troca">TROCA ENTRE LOCAIS</label><br/>
-<input type="radio" id="teste" name="STATUS_TELA" value="Movimentação">
-<label for="Movimentacao">MOVIMENTAÇÃO ESTOQUE</label><br/><br/>
+<input type="radio"  name="STATUS_TELA" value="Transf / Locais">
+<label for="Transf / Locais">TROCA ENTRE LOCAIS</label><br/>
+<input type="radio"  name="STATUS_TELA" value="Movimentação">
+<label for="Movimentação">MOVIMENTAÇÃO ESTOQUE</label><br/><br/>
 QUEM RECEBE:
 
-<select name="QUEM_RECEBE">
+<select name="QUEM_RECEBE" id="Estado_recebe">
 <option value="CD">CD</option>
 <option value="F/L">F/L</option>
 <option value="S/R">S/R</option>
@@ -65,12 +65,46 @@ QUEM RECEBE:
 <input type="submit" value="Alterar" name="Adicionar" class="botao-estilo">
 </fieldset>
 </form>
-<script src="js/arquivo.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+//let String_ID = window.location.search.replace('?','')
+
+const parametros = new URLSearchParams(window.location.search)
+const meuarray = Array.from(parametros.values())
+ 
+ console.log(meuarray)
+
+document.getElementById('input-ID-alterar').value = meuarray[0]
+document.getElementById('pesquisar_estilo').value = meuarray[1]
+document.getElementById('Status_Comprador').value = meuarray[2]
+document.getElementById('Estado_troca').value     = meuarray[3]
+document.getElementById('Estado_condicao').value  = meuarray[4]
+document.getElementById('Estado_recolhimento').value = meuarray[5]
+
+//document.getElementById('Transferencia').value = meuarray[6]
+let Tela = document.getElementsByName('STATUS_TELA')
+
+if(meuarray[6].toString() == "Movimentação"){
+  Tela[1].checked = true
+}else{
+  Tela[0].checked = true  
+}
+
+
+document.getElementById('Estado_recebe').value = meuarray[7]
+
+</script>
 
 <?php
 require_once 'back-sistema/conexao.php';
 
+if(!isset($_POST['Adicionar'])):
+  if(empty($TROCA_COND)):
+  $TROCA_COND = 'Nenhum';
+  endif;
+
+$ID                  = $_POST['ID'];
 $NOME_FORNECEDOR     = ucfirst($_POST['FORNECEDOR']); //OK
 $STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"]; //OK
 $TROCA_COND          = $_POST['TROCA_MEDIANTE'];//OK
@@ -79,10 +113,6 @@ $COMPRADOR           = $_POST["COMPRADOR"];//OK
 $ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
 $QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
 
-if(isset($_POST['Adicionar'])):
-if(empty($TROCA_COND)):
-$TROCA_COND = '-';
-endif;
 
 $sql_consulta_verificacao = "SELECT NOME_FORNECEDOR FROM Fornecedor_lista where NOME_FORNECEDOR = '$NOME_FORNECEDOR'";
 $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao);
@@ -90,7 +120,9 @@ $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao)
 //Caso não houver registro executará a condição
 if(mysqli_num_rows($verifica_registro_existente) == 0):
 
-$sql = "UPDATE Fornecedor_lista WHERE = $ID (`NOME_FORNECEDOR`, `RECOLHIMENTO`, `TROCA_COND`, `TELA`, `COMPRADOR`, `QUEM_RECEBE`, `ESTADO`)VALUES('$NOME_FORNECEDOR', '$STATUS_RECOLHIMENTO', '$TROCA_COND', '$STATUS_TELA', '$COMPRADOR','$QUEM_RECEBE','$ESTADO_TROCA');";
+
+
+$sql = "UPDATE Fornecedor_lista SET `ID`='$ID',`NOME_FORNECEDOR`='$NOME_FORNECEDOR', `RECOLHIMENTO`='$STATUS_RECOLHIMENTO', `TROCA_COND`='$TROCA_COND', `TELA`='$STATUS_TELA', `COMPRADOR`='$COMPRADOR', `QUEM_RECEBE`='$QUEM_RECEBE', `ESTADO`='$ESTADO_TROCA'";
 $Inserir_dados = mysqli_query($conectar,$sql);
 
 if($Inserir_dados == true):
@@ -130,11 +162,13 @@ else:
   echo '</div>';
 
 endif;
+else:
+
 endif;
 
 ?>
 
-</script>
+
 
 
 <script src="js/arquivo.js"></script>
