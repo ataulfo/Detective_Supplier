@@ -151,7 +151,7 @@ require_once 'back-sistema/conexao.php';
 
 if(isset($_POST['Botao-Pesquisar'])):
     $pesquisar = $_POST['pesquisar'];
-    $sql = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR like '$pesquisar%'";
+    $sql = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR like '$pesquisar%' order by ESTADO";
     $consulta_sql_index = mysqli_query($conectar,$sql);
 
 //Verifica se retornará o numéro de linhas

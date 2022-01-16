@@ -1,5 +1,5 @@
 function redireciona(ID,NOME,COMPRADOR,ESTADO,CONDICAO,RECOLHIMENTO,TELA,RECEBE){
-    window.open('altera_dados.php?id='+ID+'&nome='+NOME+'&comprador='+COMPRADOR+'&troca='+ESTADO+'&condicao='+CONDICAO+'&recolhimento='+RECOLHIMENTO+'&tela='+TELA+'&recebe='+RECEBE+'',"DescriptiveWindowName","left=100,top=100,width=600,height=560");
+    window.open('altera_dados.html?id='+ID+'&nome='+NOME+'&comprador='+COMPRADOR+'&troca='+ESTADO+'&condicao='+CONDICAO+'&recolhimento='+RECOLHIMENTO+'&tela='+TELA+'&recebe='+RECEBE+'',"DescriptiveWindowName","left=100,top=100,width=600,height=560");
     }
     
 

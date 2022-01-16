@@ -119,41 +119,105 @@
     </div>
   </div>
 
-  <h4 class="titulo-lista-fornecedores">LISTA DE FORNECEDORES CADASTRADOS</h4>
+  <h4 class="titulo-lista-fornecedores">LISTA DE FORNECEDORES CADASTRADOS <br/>  PESQUISA AVANÇADA</h4>
 
-    <table id="tabela-fornecedores" class="table table-dark table-hover">
-        <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">FORNECEDOR</th>
-              <th scope="col">ESTADO</th>
-              <th scope="col">RECOLHIMENTO</th>
-              <th scope="col">QUEM RECEBE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td> - </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td> - </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-              <td> - </td>
-            </tr>
-          </tbody>
-      </table>
+<div class="posicao-filtro">
+<form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+Comprador: <select name="COMPRADOR" id="Status_Comprador">
+<option name="COMP00"    value=""></option>
+<option name="COMP01"    value="Marcio">MARCIO</option>
+<option name="COMP02"    value="Helton Jhon">HELTON JHON</option>
+<option name="COMP03"    value="Leonardo">LEONARDO</option>
+<option name="COMP04"    value="Pablo">PABLO</option>
+<option name="COMP05"    value="Thays">THAYS</option>
+</select>
+<input type="submit" class="botao-estilo" name="Pesquisar" value="Pesquisar" onclick="nome_comprador();">
+</form>
+</div>
+<br/>
+<br/>
+
+<div class='VIEW-Lista-Fornecedor redireciona'>
+<div class="container">
+  <div class="row row-cols-7">
+    <div class="col">ID</div>
+    <div class="col">FORNECEDOR</div>
+    <div class="col">RECOLHIMENTO</div>
+    <div class="col" title="[P/P : Produto por Produto] [Ava/Venc : Avaria e Vencimento]">CONDIÇÃO</div>
+    <div class="col">COMPRADOR</div>
+    <div class="col">QUEM RECEBE</div>
+</div>
+  </div>
+</div>
+<?php
+require_once 'back-sistema/conexao.php';
+
+if(isset($_POST['Pesquisar'])):
+    $COMPRADOR = $_POST['COMPRADOR'];
+    //"<script>nome</script>" = $COMPRADOR;
+    $sql = "SELECT * FROM Fornecedor_lista where COMPRADOR ='$COMPRADOR' order by ESTADO"; 
+    $consulta_sql_index = mysqli_query($conectar,$sql);
+    if(mysqli_num_rows($consulta_sql_index) == 0):
+      echo '<div class="colorido5">'.
+     '<pre>      Error, registro não encontrado.</pre>';
+    else:
+
+  
+  while($contagem = mysqli_fetch_array($consulta_sql_index)):
+  if($contagem['ESTADO'] == 1):
+        echo "<div class='colorido1 redireciona'>".
+        '<div class="container">'.
+        '<div class="row row-cols-7">'.
+        '<div class="col">'.$contagem['ID'].'</div>'.
+        '<div class="col">'.$contagem['NOME_FORNECEDOR'].'</div>'.
+        '<div class="col">'.$contagem['RECOLHIMENTO'].'</div>'.
+        '<div class="col">'.$contagem['TROCA_COND'].'</div>'.
+        '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
+        '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
+        echo '</div>'.'</div>'.'</div>'.'<br/>';
+  
+  elseif($contagem['ESTADO'] == 2):
+        echo "<div class='colorido2 redireciona'>".
+        '<div class="container">'.
+        '<div class="row row-cols-7">'.
+        '<div class="col">'.$contagem['ID'].'</div>'.
+        '<div class="col">'.$contagem['NOME_FORNECEDOR'].'</div>'.
+        '<div class="col">'.$contagem['RECOLHIMENTO'].'</div>'.
+        '<div class="col">'.$contagem['TROCA_COND'].'</div>'.
+        '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
+        '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
+        echo '</div>'.'</div>'.'</div>'.'<br/>';
+        
+  elseif($contagem['ESTADO'] == 3):
+        echo "<div class='colorido3 redireciona'>".
+        '<div class="container">'.
+        '<div class="row row-cols-7">'.
+        '<div class="col">'.$contagem['ID'].'</div>'.
+        '<div class="col">'.$contagem['NOME_FORNECEDOR'].'</div>'.
+        '<div class="col">'.$contagem['RECOLHIMENTO'].'</div>'.
+        '<div class="col">'.$contagem['TROCA_COND'].'</div>'.
+        '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
+        '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
+        echo '</div>'.'</div>'.'</div>'.'<br/>';
+  
+  endif;
+  endwhile;
+  endif; 
+endif;
+  
+
+
+?>
+<script>
+let nome = document.getElementById('Status_Comprador')
+
+function nome_comprador(){
+
+}
+
+
+
+</script>
 
 <script src="js/arquivo.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
