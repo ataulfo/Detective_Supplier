@@ -51,9 +51,6 @@
           15 9 25 0 45 -16 37 -68 37 -84 0z"/>
           </g>
 
-
-
-
         </svg>
         Cadastro
       </a>
@@ -75,9 +72,6 @@
           -10 -18 -10 -40z"/>
           </g>
 
-
-
-
         </svg>
         Compradores
       </a>
@@ -97,9 +91,6 @@
           -145 -28 -137 -16 3 5 19 9 35 9 44 0 31 24 -17 32 -21 3 -49 9 -61 13 -22 7
           -23 5 -23 -49z"/>
           </g>
-
-
-
         </svg>
         Fornecedores
       </a>
@@ -183,7 +174,7 @@ QUEM RECEBE:
 </details>
 <br/>
 <br/>
-<input type="submit" value="Adicionar" name="Adicionar" class="botao-estilo">
+<input type="submit" value="Cadastrar" name="Adicionar" class="botao-estilo">
 </fieldset>
 </form>
 <script src="js/arquivo.js"></script>
@@ -192,15 +183,15 @@ QUEM RECEBE:
 <?php
 require_once 'back-sistema/conexao.php';
 
-$NOME_FORNECEDOR     = ucfirst($_POST['FORNECEDOR']); //OK
-$STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"]; //OK
-$TROCA_COND          = $_POST['TROCA_MEDIANTE'];//OK
-$STATUS_TELA         = $_POST['STATUS_TELA']; //OK
-$COMPRADOR           = $_POST["COMPRADOR"];//OK
-$ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
-$QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
-
 if(isset($_POST['Adicionar'])):
+
+  $NOME_FORNECEDOR     = ucfirst($_POST['FORNECEDOR']); //OK
+  $STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"]; //OK
+  $TROCA_COND          = $_POST['TROCA_MEDIANTE'];//OK
+  $STATUS_TELA         = $_POST['STATUS_TELA']; //OK
+  $COMPRADOR           = $_POST["COMPRADOR"];//OK
+  $ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
+  $QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
 
 if(empty($TROCA_COND)):
 $TROCA_COND = 'Nenhum';
@@ -227,6 +218,7 @@ if($Inserir_dados == true):
   echo "Dados do fornecedor $NOME_FORNECEDOR adicionados com sucesso!";
   echo '</div>';
   echo '</div>';
+  
 endif;
 elseif($NOME_FORNECEDOR == ''):
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';

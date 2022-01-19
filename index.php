@@ -111,14 +111,12 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
         <strong>Ataulfo</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        
         <li><a class="dropdown-item" href="#">Configurações</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="login.html">Sair</a></li>
       </ul>
       </div>
   </div>
-  
 <br/>
 <br/>
 
