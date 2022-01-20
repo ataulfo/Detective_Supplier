@@ -18,7 +18,7 @@ require_once 'back-sistema/conexao.php';
 $ID                  = $_POST['ID'];
 $NOME_FORNECEDOR     = ucfirst($_POST['FORNECEDOR']); //OK
 $STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"]; //OK
-$TROCA_COND          = $_POST['TROCA_MEDIANTE'];//OK
+$TROCA_COND          = filter_input(INPUT_POST,'TROCA_MEDIANTE',FILTER_SANITIZE_SPECIAL_CHARS);//OK
 $STATUS_TELA         = $_POST['STATUS_TELA']; //OK
 $COMPRADOR           = $_POST["COMPRADOR"];//OK
 $ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK

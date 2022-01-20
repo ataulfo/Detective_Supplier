@@ -187,7 +187,7 @@ if(isset($_POST['Adicionar'])):
 
   $NOME_FORNECEDOR     = ucfirst($_POST['FORNECEDOR']); //OK
   $STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"]; //OK
-  $TROCA_COND          = $_POST['TROCA_MEDIANTE'];//OK
+  $TROCA_COND          = filter_input(INPUT_POST,'TROCA_MEDIANTE',FILTER_SANITIZE_SPECIAL_CHARS);//OK
   $STATUS_TELA         = $_POST['STATUS_TELA']; //OK
   $COMPRADOR           = $_POST["COMPRADOR"];//OK
   $ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
@@ -196,9 +196,7 @@ if(isset($_POST['Adicionar'])):
 if(empty($TROCA_COND)):
 $TROCA_COND = 'Nenhum';
 endif;
-if(empty($NOME_FORNECEDOR)):
 
-endif;
 $sql_consulta_verificacao = "SELECT NOME_FORNECEDOR FROM Fornecedor_lista where NOME_FORNECEDOR = '$NOME_FORNECEDOR'";
 $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao);
 
@@ -206,7 +204,6 @@ $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao)
 if(mysqli_num_rows($verifica_registro_existente) == 0 && $NOME_FORNECEDOR != ''):
     $sql = "INSERT INTO Fornecedor_lista(`NOME_FORNECEDOR`, `RECOLHIMENTO`, `TROCA_COND`, `TELA`, `COMPRADOR`, `QUEM_RECEBE`, `ESTADO`)VALUES('$NOME_FORNECEDOR', '$STATUS_RECOLHIMENTO', '$TROCA_COND', '$STATUS_TELA', '$COMPRADOR','$QUEM_RECEBE','$ESTADO_TROCA');";
     $Inserir_dados = mysqli_query($conectar,$sql);
-
 if($Inserir_dados == true):
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
   echo '<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">';
@@ -218,7 +215,18 @@ if($Inserir_dados == true):
   echo "Dados do fornecedor $NOME_FORNECEDOR adicionados com sucesso!";
   echo '</div>';
   echo '</div>';
-  
+
+elseif($Inserir_dados == false || empty($Inserir_dados)):
+  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
+  echo '<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">';
+  echo '<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>';
+  echo '</symbol>';
+  echo '<div class="alert alert-danger d-flex align-items-center" role="alert">';
+  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
+  echo '<div>';
+  echo "Erro na gravação do fornecedor $NOME_FORNECEDOR campo nome vazio ou erro na conexão";
+  echo '</div>';
+  echo '</div>'; 
 endif;
 elseif($NOME_FORNECEDOR == ''):
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
@@ -231,7 +239,6 @@ elseif($NOME_FORNECEDOR == ''):
   echo "Erro na gravação do fornecedor $NOME_FORNECEDOR campo nome vazio ou erro na conexão";
   echo '</div>';
   echo '</div>';
-
 else:
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
   echo '<symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">';
@@ -243,6 +250,7 @@ else:
   echo "Aviso o fornecedor $NOME_FORNECEDOR já se encontra registrado!";
   echo '</div>';
   echo '</div>';
+
 endif;
 endif;
 
