@@ -146,7 +146,7 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
 
 <?php
 require_once 'back-sistema/conexao.php';
-
+///Meu teste
 if(isset($_POST['Botao-Pesquisar'])):
     $pesquisar = $_POST['pesquisar'];
     $sql = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR like '$pesquisar%' order by ESTADO";
