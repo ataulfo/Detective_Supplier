@@ -119,7 +119,7 @@
   <fieldset>
 <legend>Cadastro Fornecedor</legend><br/><br/>
 
-Fornecedor: <input type="text" name="FORNECEDOR" maxlength="25" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSTÇUVXZabcdefghijlmnopqrstuvxzç' ']+$">
+Fornecedor: <input type="text" name="FORNECEDOR" maxlength="25" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSWYTKÇUVXZabcdefghijlmnopqrysktwuvxzç' ']+$">
 <br/>
 <br/>
 Comprador: <select name="COMPRADOR">
@@ -177,8 +177,6 @@ QUEM RECEBE:
 <input type="submit" value="Cadastrar" name="Adicionar" class="botao-estilo">
 </fieldset>
 </form>
-<script src="js/arquivo.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
 
 <?php
 require_once 'back-sistema/conexao.php';
@@ -192,7 +190,7 @@ if(isset($_POST['Adicionar'])):
   $COMPRADOR           = $_POST["COMPRADOR"];//OK
   $ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
   $QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
-
+  $STATUS_GERAL        = 'Ativo';
 if(empty($TROCA_COND)):
 $TROCA_COND = 'Nenhum';
 endif;
@@ -202,7 +200,7 @@ $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao)
 
 //Caso não houver registro executará a condição
 if(mysqli_num_rows($verifica_registro_existente) == 0 && $NOME_FORNECEDOR != ''):
-    $sql = "INSERT INTO Fornecedor_lista(`NOME_FORNECEDOR`, `RECOLHIMENTO`, `TROCA_COND`, `TELA`, `COMPRADOR`, `QUEM_RECEBE`, `ESTADO`)VALUES('$NOME_FORNECEDOR', '$STATUS_RECOLHIMENTO', '$TROCA_COND', '$STATUS_TELA', '$COMPRADOR','$QUEM_RECEBE','$ESTADO_TROCA');";
+    $sql = "INSERT INTO Fornecedor_lista(`NOME_FORNECEDOR`, `RECOLHIMENTO`, `TROCA_COND`, `TELA`, `COMPRADOR`, `QUEM_RECEBE`, `ESTADO`,`STATUS_GERAL`)VALUES('$NOME_FORNECEDOR', '$STATUS_RECOLHIMENTO', '$TROCA_COND', '$STATUS_TELA', '$COMPRADOR','$QUEM_RECEBE','$ESTADO_TROCA','$STATUS_GERAL');";
     $Inserir_dados = mysqli_query($conectar,$sql);
 if($Inserir_dados == true):
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
@@ -256,6 +254,8 @@ endif;
 
 ?>
 
+<script src="js/arquivo.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

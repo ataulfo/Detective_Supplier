@@ -32,7 +32,7 @@ Estado: <select name="ESTADO_TROCA" id="Estado_troca">
 <option name="COM_TROCA"   value="1">COM TROCA</option>
 <option name="SEM_TROCA"   value="2">SEM TROCA</option>
 <option name="EXCESSAO"    value="3">BONIFICAÇÃO</option> 
-   
+<option name="INATIVO"     value="4">INATIVO</option>   
 </select>
 <br/>
 <br>
@@ -46,6 +46,14 @@ Recolhimento: <select name="STATUS_RECOLHIMENTO" id="Estado_recolhimento">
 </select>
 <br/>
 <br/>
+STATUS:
+<br/>
+<input type="radio" name="STATUS_GERAL" value="Ativo">
+<label for="Ativo">ATIVO</label><br/>
+<input type="radio" name="STATUS_GERAL" value="Inativo">
+<lable for="Inativo">INATIVO</lable>
+<br/>
+<br/>
 Tela:
 <br/>
 <input type="radio"  name="STATUS_TELA" value="Transf / Locais">
@@ -53,7 +61,6 @@ Tela:
 <input type="radio"  name="STATUS_TELA" value="Movimentação">
 <label for="Movimentação">MOVIMENTAÇÃO ESTOQUE</label><br/><br/>
 QUEM RECEBE:
-
 <select name="QUEM_RECEBE" id="Estado_recebe">
 <option value="CD">CD</option>
 <option value="F/L">F/L</option>
@@ -80,20 +87,28 @@ document.getElementById('Estado_troca').value     = meuarray[3]
 document.getElementById('Estado_condicao').value  = meuarray[4]
 document.getElementById('Estado_recolhimento').value = meuarray[5]
 
-//document.getElementById('Transferencia').value = meuarray[6]
-let Tela = document.getElementsByName('STATUS_TELA')
 
+//document.getElementById('Transferencia').value = meuarray[6]
+
+let Tela = document.getElementsByName('STATUS_TELA')
 if(meuarray[6].toString() == "Movimentação"){
   Tela[1].checked = true
 }else{
   Tela[0].checked = true  
 }
 
+let Status_geral = document.getElementsByName('STATUS_GERAL')
+if(meuarray[8].toString() == "Ativo"){
+Status_geral[0].checked = true;
+}else{
+Status_geral[1].checked = true  
+}
+
+
 document.getElementById('Estado_recebe').value = meuarray[7]
 
 </script>
 <script src="js/arquivo.js"></script>
-
 <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

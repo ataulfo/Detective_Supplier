@@ -23,13 +23,18 @@ $STATUS_TELA         = $_POST['STATUS_TELA']; //OK
 $COMPRADOR           = $_POST["COMPRADOR"];//OK
 $ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
 $QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
+$STATUS_GERAL        = $_POST['STATUS_GERAL'];
 
 if(isset($_POST['Alterar'])):
   if(empty($_POST['TROCA_MEDIANTE'])):
   $TROCA_COND = 'Nenhum';
   endif;
 
-$sql_alterar = "UPDATE Fornecedor_lista SET `NOME_FORNECEDOR`='$NOME_FORNECEDOR',`RECOLHIMENTO`='$STATUS_RECOLHIMENTO',`TROCA_COND`='$TROCA_COND', `TELA`='$STATUS_TELA', `COMPRADOR`='$COMPRADOR', `QUEM_RECEBE`='$QUEM_RECEBE', `ESTADO`='$ESTADO_TROCA' where `ID`='$ID'";
+if($STATUS_GERAL == 'Inativo'):
+  $ESTADO_TROCA = '4';
+endif;
+
+$sql_alterar = "UPDATE Fornecedor_lista SET `NOME_FORNECEDOR`='$NOME_FORNECEDOR',`RECOLHIMENTO`='$STATUS_RECOLHIMENTO',`TROCA_COND`='$TROCA_COND', `TELA`='$STATUS_TELA', `COMPRADOR`='$COMPRADOR', `QUEM_RECEBE`='$QUEM_RECEBE', `ESTADO`='$ESTADO_TROCA',`STATUS_GERAL`='$STATUS_GERAL' where `ID`='$ID'";
 $Inserir_dados = mysqli_query($conectar,$sql_alterar);
 
 if($Inserir_dados == true):

@@ -25,6 +25,7 @@ td{background:blue;font-family: monospace;}
 .colorido1{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #0649c5}
 .colorido2{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #f4282b}
 .colorido3{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #b2c204}
+.colorido4{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #6f706f}
 .colorido5{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #61396d}
 
 
@@ -50,7 +51,7 @@ pre{font-size:16px;font-family:Arial, Helvetica, sans-serif;margin-bottom: 0px;p
   background:rgb(219, 187, 4);
   padding-right: 10px;
 }
-.green{
- background: #11a504;
+.cinza{
+ background: #6f706f;
  padding-right:10px;
 }

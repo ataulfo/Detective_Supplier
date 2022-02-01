@@ -105,15 +105,25 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
   </ul>
 
   <hr>
+<?php
+session_start();
+
+
+$nome = $_SESSION['nome'];
+$ID   = $_SESSION['ID'];
+if(!isset($_SESSION['ID'])):
+  header('Location:login.php');
+  endif;
+  ?>
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Ataulfo</strong>
+        <strong><?php echo $nome;?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href="#">Configurações</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="login.html">Sair</a></li>
+        <li><a class="dropdown-item" href="login.php">Sair</a></li>
       </ul>
       </div>
   </div>
@@ -124,7 +134,7 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
 <div class="foo blue">COM TROCA</div>
 <div class="foo yellow">BONIFICADO</div>
 <div class="foo red"> SEM TROCA </div>
-
+<div class="foo cinza"> INATIVO </div>
 </div>
 <br>
 <br/>
@@ -145,8 +155,10 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
 </div>
 
 <?php
+
 require_once 'back-sistema/conexao.php';
-///Meu teste
+
+
 if(isset($_POST['Botao-Pesquisar'])):
     $pesquisar = $_POST['pesquisar'];
     $sql = "SELECT * FROM Fornecedor_lista where NOME_FORNECEDOR like '$pesquisar%' order by ESTADO";
@@ -163,7 +175,7 @@ while($contagem = mysqli_fetch_array($consulta_sql_index)):
  // redireciona1(`$contagem[NOME_FORNECEDOR]`);
  //echo"<div class='colorido1 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[RECOLHIMENTO]`,`$contagem[TROCA_COND]`,`$contagem[TELA]`,`$contagem[COMPRADOR]`,`$contagem[QUEM_RECEBE]`);'>".
 if($contagem['ESTADO'] == 1):
-      echo"<div class='colorido1 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`);'>".
+      echo"<div class='colorido1 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
       '<div class="container">'.
       '<div class="row row-cols-7">'.
       '<div class="col">'.$contagem['ID'].'</div>'.
@@ -176,7 +188,7 @@ if($contagem['ESTADO'] == 1):
       echo '</div>'.'</div>'.'</div>'.'<br/>';
 
 elseif($contagem['ESTADO'] == 2):
-      echo "<div class='colorido2 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`);'>".
+      echo "<div class='colorido2 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
       '<div class="container">'.
       '<div class="row row-cols-7">'.
       '<div class="col">'.$contagem['ID'].'</div>'.
@@ -189,7 +201,7 @@ elseif($contagem['ESTADO'] == 2):
       echo '</div>'.'</div>'.'</div>'.'<br/>';
       
 elseif($contagem['ESTADO'] == 3):
-      echo "<div class='colorido3 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`);'>".
+      echo "<div class='colorido3 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
       '<div class="container">'.
       '<div class="row row-cols-7">'.
       '<div class="col">'.$contagem['ID'].'</div>'.
@@ -201,6 +213,18 @@ elseif($contagem['ESTADO'] == 3):
       '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
       echo '</div>'.'</div>'.'</div>'.'<br/>';
 
+elseif($contagem['ESTADO'] == 4):
+      echo "<div class='colorido4 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
+      '<div class="container">'.
+      '<div class="row row-cols-7">'.
+      '<div class="col">'.$contagem['ID'].'</div>'.
+      '<div class="col">'.$contagem['NOME_FORNECEDOR'].'</div>'.
+      '<div class="col">'.$contagem['RECOLHIMENTO'].'</div>'.
+      '<div class="col">'.$contagem['TROCA_COND'].'</div>'.
+      '<div class="col">'.$contagem['TELA'].'</div>'.
+      '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
+      '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
+      echo '</div>'.'</div>'.'</div>'.'<br/>';
 endif;
 endwhile;
 endif; 
