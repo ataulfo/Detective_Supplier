@@ -21,6 +21,33 @@ if(!isset($_SESSION['ID'])):
 
   ?>
 
+<script type="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyADfWyZO1pYb7WdFi4NeLfPhrvg2B-1_wU",
+  authDomain: "projeto-detective-supplier.firebaseapp.com",
+  projectId: "projeto-detective-supplier",
+  storageBucket: "projeto-detective-supplier.appspot.com",
+  messagingSenderId: "904324924789",
+  appId: "1:904324924789:web:9ff1211c4913d48e92ff3c",
+  measurementId: "G-1REXNDPQQL"
+
+};
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
+
 <br/>
 <h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
 <span class="meuspan">PREVENÇÃO DE PERDAS</span>

@@ -28,7 +28,7 @@ Comprador: <select name="COMPRADOR" id="Status_Comprador">
 </select>
 <br/>
 <br/>
-Estado: <select name="ESTADO_TROCA" id="Estado_troca">
+Estado: <select name="ESTADO_TROCA" id="Estado_troca" onclick="escolher_opcao();">
 <option name="COM_TROCA"   value="1">COM TROCA</option>
 <option name="SEM_TROCA"   value="2">SEM TROCA</option>
 <option name="EXCESSAO"    value="3">BONIFICAÇÃO</option> 
@@ -87,9 +87,6 @@ document.getElementById('Estado_troca').value     = meuarray[3]
 document.getElementById('Estado_condicao').value  = meuarray[4]
 document.getElementById('Estado_recolhimento').value = meuarray[5]
 
-
-//document.getElementById('Transferencia').value = meuarray[6]
-
 let Tela = document.getElementsByName('STATUS_TELA')
 if(meuarray[6].toString() == "Movimentação"){
   Tela[1].checked = true
@@ -97,7 +94,9 @@ if(meuarray[6].toString() == "Movimentação"){
   Tela[0].checked = true  
 }
 
+
 let Status_geral = document.getElementsByName('STATUS_GERAL')
+
 if(meuarray[8].toString() == "Ativo"){
 Status_geral[0].checked = true;
 }else{

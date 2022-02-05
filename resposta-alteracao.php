@@ -26,15 +26,28 @@ $QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
 $STATUS_GERAL        = $_POST['STATUS_GERAL'];
 
 if(isset($_POST['Alterar'])):
+  
+  if($ESTADO_TROCA == 1):
+    $OPERACAO = 'Loja / Avaria';
+    elseif($ESTADO_TROCA == 2):
+    $OPERACAO = 'Quebra Operacional';
+    elseif($ESTADO_TROCA == 3):
+    $OPERACAO = 'Quebra Bonificada';
+    endif;
+
   if(empty($_POST['TROCA_MEDIANTE'])):
   $TROCA_COND = 'Nenhum';
   endif;
 
+ if($ESTADO_TROCA != 4): 
 if($STATUS_GERAL == 'Inativo'):
+  $OPERACAO = 'Quebra Operacional';
   $ESTADO_TROCA = '4';
-endif;
+//elseif($STATUS_GERAL == 'Ativo'):
 
-$sql_alterar = "UPDATE Fornecedor_lista SET `NOME_FORNECEDOR`='$NOME_FORNECEDOR',`RECOLHIMENTO`='$STATUS_RECOLHIMENTO',`TROCA_COND`='$TROCA_COND', `TELA`='$STATUS_TELA', `COMPRADOR`='$COMPRADOR', `QUEM_RECEBE`='$QUEM_RECEBE', `ESTADO`='$ESTADO_TROCA',`STATUS_GERAL`='$STATUS_GERAL' where `ID`='$ID'";
+endif;
+endif;
+$sql_alterar = "UPDATE Fornecedor_lista SET `NOME_FORNECEDOR`='$NOME_FORNECEDOR',`RECOLHIMENTO`='$STATUS_RECOLHIMENTO',`TROCA_COND`='$TROCA_COND', `TELA`='$STATUS_TELA', `COMPRADOR`='$COMPRADOR', `QUEM_RECEBE`='$QUEM_RECEBE', `ESTADO`='$ESTADO_TROCA',`STATUS_GERAL`='$STATUS_GERAL',`OPERACAO`='$OPERACAO' where `ID`='$ID'";
 $Inserir_dados = mysqli_query($conectar,$sql_alterar);
 
 if($Inserir_dados == true):

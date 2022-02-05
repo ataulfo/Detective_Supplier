@@ -198,6 +198,15 @@ if(isset($_POST['Adicionar'])):
   $ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
   $QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
   $STATUS_GERAL        = 'Ativo';
+
+  if($ESTADO_TROCA == 1):
+  $OPERACAO = 'Loja / Avaria';
+  elseif($ESTADO_TROCA == 2):
+  $OPERACAO = 'Quebra Operacional';
+  elseif($ESTADO_TROCA == 3):
+  $OPERACAO = 'Quebra Bonificada';
+  endif;
+
 if(empty($TROCA_COND)):
 $TROCA_COND = 'Nenhum';
 endif;
@@ -207,7 +216,7 @@ $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao)
 
 //Caso não houver registro executará a condição
 if(mysqli_num_rows($verifica_registro_existente) == 0 && $NOME_FORNECEDOR != ''):
-    $sql = "INSERT INTO Fornecedor_lista(`NOME_FORNECEDOR`, `RECOLHIMENTO`, `TROCA_COND`, `TELA`, `COMPRADOR`, `QUEM_RECEBE`, `ESTADO`,`STATUS_GERAL`)VALUES('$NOME_FORNECEDOR', '$STATUS_RECOLHIMENTO', '$TROCA_COND', '$STATUS_TELA', '$COMPRADOR','$QUEM_RECEBE','$ESTADO_TROCA','$STATUS_GERAL');";
+    $sql = "INSERT INTO Fornecedor_lista(`NOME_FORNECEDOR`, `RECOLHIMENTO`, `TROCA_COND`, `TELA`, `COMPRADOR`, `QUEM_RECEBE`, `ESTADO`,`STATUS_GERAL`,`OPERACAO`)VALUES('$NOME_FORNECEDOR', '$STATUS_RECOLHIMENTO', '$TROCA_COND', '$STATUS_TELA', '$COMPRADOR','$QUEM_RECEBE','$ESTADO_TROCA','$STATUS_GERAL','$OPERACAO');";
     $Inserir_dados = mysqli_query($conectar,$sql);
 if($Inserir_dados == true):
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
@@ -255,14 +264,11 @@ else:
   echo "Aviso o fornecedor $NOME_FORNECEDOR já se encontra registrado!";
   echo '</div>';
   echo '</div>';
-
 endif;
 endif;
 
 ?>
-
 <script src="js/arquivo.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

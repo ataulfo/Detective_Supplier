@@ -1,38 +1,65 @@
-<!DOCTYPE HTML>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="Autor" content="Vilagrant Ataulfo">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="autor" content="Vilagrant Ataulfo">
+   
+    <title>Login Detective Supplier</title>
+
+
+
+    <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/config.css" rel="stylesheet">
-<link href="css/color.css" rel="stylesheet">
-<title>Detective Suplier Login</title>
-</head>
-<body style="background:rgb(46, 44, 44);">
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<div class="controle">
-  <form id="input-login" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
-    <img src="imagens/detective-64.png"id="imagem-login">
-    <h6 class="h3 mb-6 fw-normal" style="color:white;">Detective Supplier Login</h1>
-<br>
-    <div class="col-md-3">
-      <input type="email" class="form-control" style="margin-bottom: 2px;" placeholder="Email" name="email" required>
-     
+
+    <!-- Favicons -->
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    
+  </head>
+  <link href="css/signin.css" rel="stylesheet">
+  <body class="text-center">
+    
+<main class="form-signin">
+  <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+    <img class="mb-4" src="imagens/detective-64.png"id="imagem-login" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Detective Supplier - Login</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" required>
+      <label for="floatingInput">Email</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" name="senha" placeholder="Password">
+      <label for="floatingPassword">Senha</label>
     </div>
 
-    <div class="col-md-3">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="senha" required>
-<br>
+    <div class="checkbox mb-3">
     </div>
-    <button class="w-45 btn btn-lg btn-dark" style="background:black;" type="submit" name="logar">Logar</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2021 - 2022</p>
+    <button class="w-100 btn btn-lg btn-primary" type="submit"name="logar">Entrar</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2021–2022</p>
   </form>
-</div>
+</main>
 <?php
 
 session_start();
@@ -60,5 +87,8 @@ endif;
 ?>
 
 
+    
 </body>
 </html>
+
+
