@@ -10,6 +10,16 @@
     <title>Lista de fornecedores</title>
 </head>
 <body>
+<?php
+
+session_start();
+if(!isset($_SESSION['ID'])):
+  header('Location:login.php');
+  endif;
+  $nome = $_SESSION['nome'];
+  $ID   = $_SESSION['ID'];
+
+  ?>
     <br/>
 <h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
 <span class="meuspan">PREVENÇÃO DE PERDAS</span>
@@ -58,7 +68,7 @@
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="lista_compradores.html" class="nav-link text-white">
+      <a href="lista_compradores.php" class="nav-link text-white">
         <svg class="bi me-2" width="32" height="32">
 
           <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
@@ -108,13 +118,14 @@
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Ataulfo</strong>
+        <strong><?php echo $nome;?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
         
-        <li><a class="dropdown-item" href="#">Configurações</a></li>
+      <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>
+        <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="login.html">Sair</a></li>
+        <li><a class="dropdown-item" href="login.php">Sair</a></li>
       </ul>
     </div>
   </div>
@@ -199,26 +210,25 @@ if(isset($_POST['Pesquisar'])):
         '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
         '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
         echo '</div>'.'</div>'.'</div>'.'<br/>';
+   
+elseif($contagem['ESTADO'] == 4):
+  echo "<div class='colorido4 redireciona'>".
+  '<div class="container">'.
+  '<div class="row row-cols-7">'.
+  '<div class="col">'.$contagem['ID'].'</div>'.
+  '<div class="col">'.$contagem['NOME_FORNECEDOR'].'</div>'.
+  '<div class="col">'.$contagem['RECOLHIMENTO'].'</div>'.
+  '<div class="col">'.$contagem['TROCA_COND'].'</div>'.
+  '<div class="col">'.$contagem['COMPRADOR'].'</div>'.
+  '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
+  echo '</div>'.'</div>'.'</div>'.'<br/>';     
   
   endif;
   endwhile;
   endif; 
 endif;
-  
-
 
 ?>
-<script>
-let nome = document.getElementById('Status_Comprador')
-
-function nome_comprador(){
-
-}
-
-
-
-</script>
-
 <script src="js/arquivo.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 </body>

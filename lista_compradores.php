@@ -6,12 +6,11 @@
 <link href="../diretorio_html/imagens/detective-16.png">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/config.css" rel="stylesheet">
-<link href="css/formulario.css" rel="stylesheet" >
 <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
     <title>Lista de compradores</title>
 </head>
 <body>
-<?php
+  <?php
 
 session_start();
 if(!isset($_SESSION['ID'])):
@@ -36,6 +35,9 @@ if(!isset($_SESSION['ID'])):
 
       <path style="fill:#000000; stroke:none;" d="M0 0L0 32L32 32L32 0L0 0z"/>
 <path style="fill:#4294ff; stroke:none;" d="M1 1L1 15L15 15L15 1L1 1M17 1L17 15L31 15L31 1L17 1M1 17L1 31L15 31L15 17L1 17M17 17L17 31L31 31L31 17L17 17z"/>
+
+    
+    
     </svg>
     <span class="fs-4">PAINEL</span>
   </a>
@@ -122,110 +124,93 @@ if(!isset($_SESSION['ID'])):
       </ul>
     </div>
   </div>
-  
-</head>
+  <table id="tabela-compradores"class="table table-dark table">
+    <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NOME</th>
+          <th scope="col">TELEFONE</th>
+          <th scope="col">EMAIL</th>
+          <th scope="col">ATIVO</th>
+          <th scope="col">SITUAÇÃO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td class="situacao-ativo">MARCIO</td>
+          <td class="situacao-ativo"> 63992107848 </td>
+          <td> - </td>
+          <td class="situacao-ativo"> SIM </td>
+          <td class="situacao-ativo"> EM OPERAÇÃO </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td class="situacao-ativo">LEONARDO</td>
+          <td class="situacao-ativo"> 63991057321 </td>
+          <td> - </td>
+          <td class="situacao-ativo"> SIM </td>
+          <td class="situacao-ativo"> EM OPERAÇÃO </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td style="color:rgb(243, 16, 16);font-weight: bold;">HELTON JHON</td>
+          <td class="situacao-inativo"> 63984668490 </td>
+          <td> - </td>
+          <td style="color:rgb(243, 16, 16);font-weight: bold;"> NÃO </td>
+          <td style="color:rgb(51, 224, 8);font-weight: bold;"> FÉRIAS </td>
 
-    <div id="cadastro">
-    <fieldset>
-        <legend>CADASTRO ANALISTA</legend>
-    <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
-    
-            [Imagem de perfil]<br/><input type="file" name="arquivo"accept="image/png" id="defoto"><br/><br/>
-            <?php echo $_FILES['arquivo'];?>
-
-
-Nome:<br/><input  type="text"      maxlength="20" name="nome" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSWYTKÇUVXZabcdefghijlmnopqrysktwuvxzç' ']+$"><br/>
-Email:<br/><input type="email"     maxlength="40" name="email" style="margin-left:-1px;"><br/>
-Senha:<br/><input type="password"  maxlength="12" name="senha" style="margin-left:-1px;"><br/>
-Tipo de conta:<br/>
-<select name="opcao-conta">
- <option value="0">Comum</option>
- <option value="1">Administradora</option>   
-</select>
-<br/>
-<br/>
-<input type="submit" name="botao-cadastrar" value="Cadastrar">
-    </form>
-    </fieldset>
-</div>
-
-<?php
-require_once 'back-sistema/conexao.php';
-
-if(isset($_POST['botao-cadastrar'])):
-
-  $NOME  = ucfirst($_POST['nome']); //OK
-  $EMAIL = $_POST['email'];//OK
-  $SENHA = $_POST['senha'];
-
-$sql_consulta_verificacao = "SELECT NOME FROM usuario where NOME = '$NOME'";
-$verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao);
-
-//Caso não houver registro executará a condição
-if(mysqli_num_rows($verifica_registro_existente) == 0 && $NOME != ''):
-    $sql = "INSERT INTO usuario(`NOME`, `EMAIL`, `SENHA`)VALUES('$NOME', '$EMAIL', md5($SENHA));";
-    $Inserir_dados = mysqli_query($conectar,$sql);
-if($Inserir_dados == true):
-  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
-  echo '<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">';
-  echo '<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>';
-  echo '</symbol>';
-  echo '<div class="alert alert-success d-flex align-items-center" role="alert">';
-  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>';
-  echo '<div>';
-  echo "Dados do fornecedor $NOME adicionados com sucesso!";
-  echo '</div>';
-  echo '</div>';
-
-elseif($Inserir_dados == false || empty($Inserir_dados)):
-  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
-  echo '<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">';
-  echo '<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>';
-  echo '</symbol>';
-  echo '<div class="alert alert-danger d-flex align-items-center" role="alert">';
-  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
-  echo '<div>';
-  echo "Erro na gravação do fornecedor $NOME campo nome vazio ou erro na conexão";
-  echo '</div>';
-  echo '</div>'; 
-endif;
-elseif($NOME_FORNECEDOR == ''):
-  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
-  echo '<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">';
-  echo '<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>';
-  echo '</symbol>';
-  echo '<div class="alert alert-danger d-flex align-items-center" role="alert">';
-  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
-  echo '<div>';
-  echo "Erro na gravação do fornecedor $NOME campo nome vazio ou erro na conexão";
-  echo '</div>';
-  echo '</div>';
-else:
-  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
-  echo '<symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">';
-  echo '<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>';
-  echo '</symbol>';
-  echo '<div class="alert alert-warning d-flex align-items-center" role="alert" autofocus="on">';
-  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
-  echo '<div>';
-  echo "Aviso o fornecedor $NOME já se encontra registrado!";
-  echo '</div>';
-  echo '</div>';
-
-endif;
-endif;
-
-?>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td class="situacao-ativo">THAYS</td>
+            <td class="situacao-ativo"> 63999734300 </td>
+            <td> - </td>
+            <td class="situacao-ativo"> SIM </td>
+            <td class="situacao-ativo"> EM OPERAÇÃO </td>
+            
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td style="color:rgb(243, 16, 16);font-weight: bold;">PABLO</td>
+            <td class="situacao-inativo"> 63992457777 </td>
+            <td> - </td>
+            <td style="color:rgb(243, 16, 16);font-weight: bold;"> NÃO </td:>
+             <td style="color:rgb(51, 224, 8);font-weight: bold;"> FÉRIAS </td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td class="situacao-ativo">WITOR</td>
+              <td class="situacao-ativo"> 63984100146 </td>
+              <td> - </td>
+              <td class="situacao-ativo"> SIM </td>
+              <td class="situacao-ativo"> EM OPERAÇÃO </td>
+              
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td class="situacao-ativo">ROMARIO</td>
+              <td class="situacao-ativo"> 63992704356 </td>
+              <td> - </td>
+              <td class="situacao-ativo"> SIM </td>
+              <td class="situacao-ativo"> EM OPERAÇÃO </td>
+              
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td class="situacao-ativo">MÁRCIA</td>
+              <td class="situacao-ativo"> 63992639401 </td>
+              <td> - </td>
+              <td class="situacao-ativo"> SIM </td>
+              <td class="situacao-ativo"> EM OPERAÇÃO </td>
+              
+            </tr>
+    </tbody>
+  </table>
 
 
-
-
-
-
-
+  <script src="js/arquivo.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
-
-<script src="js/arquivo.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
 </html>

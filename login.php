@@ -34,30 +34,29 @@
   </form>
 </div>
 <?php
+
 session_start();
 require_once 'back-sistema/conexao.php';
+
 $email = $_POST['email'];
 $senha = $_POST['senha'];
-$sql = "select * from usuario where EMAIL = '$email' and SENHA = md5($senha)";
+$sql   = "select * from usuario where EMAIL='$email' and SENHA = md5($senha)";
 $resultado = mysqli_query($conectar,$sql);
 
 if(isset($_POST['logar'])):
 if(mysqli_num_rows($resultado)== 1):
-   $conta =  mysqli_fetch_array($resultado);
+    $conta =  mysqli_fetch_array($resultado);
     $_SESSION['ID']    = $conta[0];
     $_SESSION['nome']  = $conta[1];
     $_SESSION['email'] = $conta[2];
     header('Location:index.php');
 else:
-  echo 'Error usuário e senha inválido..';
+  echo '<script>alert("Senha ou email Não correspondem");</script>';
 endif;
 else:
   session_unset();
   session_destroy();
 endif;
-
-
-
 ?>
 
 

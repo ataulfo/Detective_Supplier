@@ -9,10 +9,18 @@
 <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
 <title>Sistema Detective Supplier</title>
 </head>
-
-
-
 <body>
+
+<?php
+session_start();
+if(!isset($_SESSION['ID'])):
+  header('Location:login.php');
+  endif;
+  $nome = $_SESSION['nome'];
+  $ID   = $_SESSION['ID'];
+
+  ?>
+
 <br/>
 <h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
 <span class="meuspan">PREVENÇÃO DE PERDAS</span>
@@ -63,7 +71,7 @@ fill="#000000" stroke="none">
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="lista_compradores.html" class="nav-link text-white">
+      <a href="lista_compradores.php" class="nav-link text-white">
         <svg class="bi me-2" width="32" height="32">
 
         <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
@@ -101,35 +109,31 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
         Fornecedores
       </a>
     </li>
-    
   </ul>
-
   <hr>
-<?php
-session_start();
-
-
-$nome = $_SESSION['nome'];
-$ID   = $_SESSION['ID'];
-if(!isset($_SESSION['ID'])):
-  header('Location:login.php');
-  endif;
-  ?>
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
         <strong><?php echo $nome;?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">Configurações</a></li>
+      <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>  
+      <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="login.php">Sair</a></li>
       </ul>
       </div>
   </div>
-<br/>
+
+  
 <br/>
 
+<div class="filtro-index">
+  
+ <input type="radio" name="Filtro" value="Nome_Fornecedor" checked> Nome
+ <input type="radio" name="Filtro" value="Cod_Barra"> Cod Barras
+</div>
+<br/>
 <div class="padrao">
 <div class="foo blue">COM TROCA</div>
 <div class="foo yellow">BONIFICADO</div>
@@ -139,7 +143,6 @@ if(!isset($_SESSION['ID'])):
 <br>
 <br/>
 <br/>
-
 <div class='minhaVIEW redireciona'>
 <div class="container">
   <div class="row row-cols-7">
@@ -172,8 +175,6 @@ if(mysqli_num_rows($consulta_sql_index) == 0 || $pesquisar == ''):
   else:
 
 while($contagem = mysqli_fetch_array($consulta_sql_index)):
- // redireciona1(`$contagem[NOME_FORNECEDOR]`);
- //echo"<div class='colorido1 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[RECOLHIMENTO]`,`$contagem[TROCA_COND]`,`$contagem[TELA]`,`$contagem[COMPRADOR]`,`$contagem[QUEM_RECEBE]`);'>".
 if($contagem['ESTADO'] == 1):
       echo"<div class='colorido1 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
       '<div class="container">'.

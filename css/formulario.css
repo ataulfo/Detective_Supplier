@@ -1,11 +1,11 @@
 #cadastro{
-    margin-top: 200px;
-    margin-left: 510px;
+    margin-top: -330px;
+    margin-left: 340px;
     color:black;
 
 }
 body{
-background: linear-gradient(to right,#5e5b5b,#ccc);
+background: linear-gradient(to right,#868383,#ccc);
 }
 
 input[type="submit"]{

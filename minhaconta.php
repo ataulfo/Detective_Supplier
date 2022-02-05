@@ -6,39 +6,46 @@
 <link href="../diretorio_html/imagens/detective-16.png">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/config.css" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
-    <title>Lista de compradores</title>
 </head>
 <body>
-    <br/>
-<h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
-<span class="meuspan">PREVENÇÃO DE PERDAS</span>
-<br/>
-<br/>
-<br/>
+<?php
 
-<br/>
-<br/>
-<br/>
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-90px">
+session_start();
+if(!isset($_SESSION['ID'])):
+  header('Location:login.php');
+  endif;
+  $nome = $_SESSION['nome'];
+  $ID   = $_SESSION['ID'];
+
+  ?>
+<br>
+<h3 id="texto-titulo">Bem vindo ao Detective Supplier<img src="imagens/detective-64.png"></h3>
+<span class="meuspan">PREVENÇÃO DE PERDAS</span>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-66px">
   <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi me-2" width="32" height="32">
 
       <path style="fill:#000000; stroke:none;" d="M0 0L0 32L32 32L32 0L0 0z"/>
-<path style="fill:#4294ff; stroke:none;" d="M1 1L1 15L15 15L15 1L1 1M17 1L17 15L31 15L31 1L17 1M1 17L1 31L15 31L15 17L1 17M17 17L17 31L31 31L31 17L17 17z"/>
+      <path style="fill:#4294ff; stroke:none;" d="M1 1L1 15L15 15L15 1L1 1M17 1L17 15L31 15L31 1L17 1M1 17L1 31L15 31L15 17L1 17M17 17L17 31L31 31L31 17L17 17z"/>
+      
 
-    
-    
+
+
     </svg>
     <span class="fs-4">PAINEL</span>
   </a>
   <hr>
-  
   <ul class=" nav nav-pills flex-column mb-auto">
     <li class="selecionar dropdown-item">
       <a href="cadastro.php" class="nav-link text-white" aria-current="page">
         <svg class="bi me-2" width="32" height="32">
-
           <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
           fill="#000000" stroke="none">
           <path d="M86 305 c-8 -8 -19 -15 -25 -15 -13 0 -14 -20 -2 -38 5 -9 24 -12 57
@@ -54,13 +61,12 @@
           15 9 25 0 45 -16 37 -68 37 -84 0z"/>
           </g>
 
-          
         </svg>
         Cadastro
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="lista_compradores.html" class="nav-link text-white">
+      <a href="lista_compradores.php" class="nav-link text-white">
         <svg class="bi me-2" width="32" height="32">
 
           <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
@@ -75,6 +81,7 @@
           <path d="M150 60 c0 -22 5 -40 10 -40 6 0 10 18 10 40 0 22 -4 40 -10 40 -5 0
           -10 -18 -10 -40z"/>
           </g>
+
         </svg>
         Compradores
       </a>
@@ -82,7 +89,6 @@
     <li class="selecionar dropdown-item">
       <a href="lista_fornecedores.php" class="nav-link text-white">
         <svg class="bi me-2" width="32" height="32">
-
           <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
           fill="#000000" stroke="none">
           <path d="M62 308 c-19 -19 -14 -37 13 -44 32 -8 32 -24 0 -54 l-25 -24 37 -38
@@ -99,108 +105,92 @@
         Fornecedores
       </a>
     </li>
+    
   </ul>
+
   <hr>
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Ataulfo</strong>
+        <strong><?php echo $nome?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
         
-        <li><a class="dropdown-item" href="#">Configurações</a></li>
+      <li><a class="dropdown-item" href="#">Conta: ADM</a></li>
+
+      <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>
+        <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="login.html">Sair</a></li>
+        <li><a class="dropdown-item" href="login.php">Sair</a></li>
       </ul>
     </div>
   </div>
-  <table id="tabela-compradores"class="table table-dark table">
-    <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">NOME</th>
-          <th scope="col">TELEFONE</th>
-          <th scope="col">EMAIL</th>
-          <th scope="col">ATIVO</th>
-          <th scope="col">SITUAÇÃO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td class="situacao-ativo">MARCIO</td>
-          <td class="situacao-ativo"> 63992107848 </td>
-          <td> - </td>
-          <td class="situacao-ativo"> SIM </td>
-          <td class="situacao-ativo"> EM OPERAÇÃO </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td class="situacao-ativo">LEONARDO</td>
-          <td class="situacao-ativo"> 63991057321 </td>
-          <td> - </td>
-          <td class="situacao-ativo"> SIM </td>
-          <td class="situacao-ativo"> EM OPERAÇÃO </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td style="color:rgb(243, 16, 16);font-weight: bold;">HELTON JHON</td>
-          <td class="situacao-inativo"> 63984668490 </td>
-          <td> - </td>
-          <td style="color:rgb(243, 16, 16);font-weight: bold;"> NÃO </td>
-          <td style="color:rgb(51, 224, 8);font-weight: bold;"> FÉRIAS </td>
 
-        </tr>
-        <tr>
-            <th scope="row">4</th>
-            <td class="situacao-ativo">THAYS</td>
-            <td class="situacao-ativo"> 63999734300 </td>
-            <td> - </td>
-            <td class="situacao-ativo"> SIM </td>
-            <td class="situacao-ativo"> EM OPERAÇÃO </td>
-            
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td style="color:rgb(243, 16, 16);font-weight: bold;">PABLO</td>
-            <td class="situacao-inativo"> 63992457777 </td>
-            <td> - </td>
-            <td style="color:rgb(243, 16, 16);font-weight: bold;"> NÃO </td:>
-             <td style="color:rgb(51, 224, 8);font-weight: bold;"> FÉRIAS </td>
-            </tr>
-            <tr>
-              <th scope="row">6</th>
-              <td class="situacao-ativo">WITOR</td>
-              <td class="situacao-ativo"> 63984100146 </td>
-              <td> - </td>
-              <td class="situacao-ativo"> SIM </td>
-              <td class="situacao-ativo"> EM OPERAÇÃO </td>
-              
-            </tr>
-            <tr>
-              <th scope="row">7</th>
-              <td class="situacao-ativo">ROMARIO</td>
-              <td class="situacao-ativo"> 63992704356 </td>
-              <td> - </td>
-              <td class="situacao-ativo"> SIM </td>
-              <td class="situacao-ativo"> EM OPERAÇÃO </td>
-              
-            </tr>
-            <tr>
-              <th scope="row">8</th>
-              <td class="situacao-ativo">MÁRCIA</td>
-              <td class="situacao-ativo"> 63992639401 </td>
-              <td> - </td>
-              <td class="situacao-ativo"> SIM </td>
-              <td class="situacao-ativo"> EM OPERAÇÃO </td>
-              
-            </tr>
-    </tbody>
-  </table>
+<br/>
 
+<form class="input-cadastro" action="<?php $SERVER['PHP_SELF'];?>" method="post">
+  <fieldset>
+<legend>Alterar conta</legend><br/><br/>
 
-  <script src="js/arquivo.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+Nome:  <input type="text" name="NOME" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSWYTKÇUVXZabcdefghijlmnopqrysktwuvxzç' ']+$">
+<br/>
+<br/>
+Email: <input type="email" name="EMAIL" style="margin-left:-1px">
+<br/>
+<br/>
+Senha: <input type="password" name="SENHA" style="margin-left:-1px">
+<br/>
+<br/>
+<input type="submit" value="Alterar" name="Adicionar" class="botao-estilo">
+</fieldset>
+</form>
+
+<?php
+require_once 'back-sistema/conexao.php';
+if(isset($_POST['Adicionar'])):
+
+  $NOME                = ucfirst($_POST['NOME']); //OK
+  $EMAIL               = $_POST['EMAIL'];//OK
+  $SENHA               = $_POST['SENHA'];//OK
+
+if($NOME == '' || $EMAIL == '' || $SENHA == ''):
+echo '<script>alert("Aviso os campos não podem ser vazios");</script>';
+else:
+
+    $sql = "UPDATE usuario SET `NOME`='$NOME', `EMAIL`='$EMAIL', `SENHA`=md5($SENHA) WHERE `ID`='$ID'";
+    $alterar_conta = mysqli_query($conectar,$sql);
+if($alterar_conta == true):
+  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
+  echo '<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">';
+  echo '<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>';
+  echo '</symbol>';
+  echo '<div class="alert alert-success d-flex align-items-center" role="alert">';
+  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>';
+  echo '<div>';
+  echo "Dados da conta $NOME alterado com sucesso!";
+  echo '</div>';
+  echo '</div>';
+
+elseif($alterar_conta == false || empty($alterar_conta)):
+  echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
+  echo '<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">';
+  echo '<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>';
+  echo '</symbol>';
+  echo '<div class="alert alert-danger d-flex align-items-center" role="alert">';
+  echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
+  echo '<div>';
+  echo "Erro na alteração da conta $NOME campo nome vazio ou erro na conexão";
+  echo '</div>';
+  echo '</div>'; 
+
+endif;
+endif;
+endif;
+
+?>
+
+<script src="js/arquivo.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

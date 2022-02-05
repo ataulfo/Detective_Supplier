@@ -10,6 +10,15 @@
 <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
 </head>
 <body>
+<?php
+session_start();
+if(!isset($_SESSION['ID'])):
+  header('Location:login.php');
+  endif;
+  $nome = $_SESSION['nome'];
+  $ID   = $_SESSION['ID'];
+
+  ?>
 <br>
 <h3 id="texto-titulo">Bem vindo ao Detective Supplier<img src="imagens/detective-64.png"></h3>
 <span class="meuspan">PREVENÇÃO DE PERDAS</span>
@@ -24,10 +33,6 @@
 
       <path style="fill:#000000; stroke:none;" d="M0 0L0 32L32 32L32 0L0 0z"/>
       <path style="fill:#4294ff; stroke:none;" d="M1 1L1 15L15 15L15 1L1 1M17 1L17 15L31 15L31 1L17 1M1 17L1 31L15 31L15 17L1 17M17 17L17 31L31 31L31 17L17 17z"/>
-      
-
-
-
     </svg>
     <span class="fs-4">PAINEL</span>
   </a>
@@ -56,7 +61,7 @@
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="lista_compradores.html" class="nav-link text-white">
+      <a href="lista_compradores.php" class="nav-link text-white">
         <svg class="bi me-2" width="32" height="32">
 
           <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
@@ -102,20 +107,22 @@
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Ataulfo</strong>
+        <strong><?php echo $nome;?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
         
-        <li><a class="dropdown-item" href="#">Configurações</a></li>
+      <li><a class="dropdown-item" href="#">Usuário: ADM</a></li>
+      <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>
+        <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="login.html">Sair</a></li>
+        <li><a class="dropdown-item" href="login.php">Sair</a></li>
       </ul>
     </div>
   </div>
 
 <br/>
 
-<form id="input-cadastro" action="<?php $SERVER['PHP_SELF'];?>" method="post">
+<form class="input-cadastro" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
   <fieldset>
 <legend>Cadastro Fornecedor</legend><br/><br/>
 
