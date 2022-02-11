@@ -22,7 +22,7 @@ details{background:rgb(173, 198, 245);cursor:pointer;width:200px;box-shadow: 1px
 .botao-estilo{background:linear-gradient(#ccc,rgb(34, 34, 34));width:150px;font-weight: bold;border-radius: 15px;color:white;}
 .botao-alterar-estilo{background:linear-gradient(#ccc,rgb(8, 28, 119));width:150px;font-weight: bold;border-radius: 15px;color:white;margin-left: 120px;}
 .botao-deletar-estilo{background:linear-gradient(#ccc,rgb(194, 3, 3));width:150px;font-weight: bold;border-radius: 15px;color:white;margin-left: -40px;}
-.selecionar:hover{background:#2067ec;}
+.selecionar:hover{margin-left:15px;background:#2067ec;}
 .filtro-index{margin-left:222px;margin-top:-280px}
 .padrao{margin-top: -10px;margin-left:190px;font-size: 14px;}
 .titulo-lista-fornecedores{margin-bottom:360px;margin-top:-350px;margin-left:360px;}

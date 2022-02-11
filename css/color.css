@@ -14,22 +14,27 @@ font-weight: bold;
   border: 1px solid rgba(0, 0, 0, .1);
   border-radius: 10px;
 }
+.controle-view{
+  color:white;
+  font-weight:bold;
+  width:1117px;
+  margin-top:-3px;
+  margin-left:221px;
+  margin-bottom:-20px;
 
+}
 .situacao-ativo{color:rgb(8, 84, 224);font-weight: bold;}
 .situacao-inativo{color:rgb(243, 16, 16);font-weight: bold;}
 
-
-td{background:blue;font-family: monospace;}
-
 .controle{text-align: center;}
-.colorido1{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #0649c5}
-.colorido2{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #f4282b}
-.colorido3{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #b2c204}
-.colorido4{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #6f706f}
-.colorido5{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:-20px;background: #61396d}
+.estado-com-troca      {background: #0649c5}
+.estado-sem-troca      {background: #f4282b}
+.estado-bonificado     {background: #b2c204}
+.estado-desabilitado   {background: #6f706f}
+.estado-nao-encontrado {background: #61396d}
 
 
-.minhaVIEW{color:white;font-weight:bold;width:1117px;margin-top:-23px;margin-left:221px;margin-bottom:0px;background:#2c3034; padding-top: 10px;padding-bottom: 10px;}
+.view-index{color:white;font-weight:bold;width:1117px;margin-top:-23px;margin-left:221px;margin-bottom:0px;background:#2c3034; padding-top: 10px;padding-bottom: 10px;}
 pre{font-size:16px;font-family:Arial, Helvetica, sans-serif;margin-bottom: 0px;padding-bottom: 2px;}
 
 .VIEW-Lista-Fornecedor{color:white;font-weight:bold;width:1117px;margin-top:-3px;margin-left:221px;margin-bottom:0px;background:#2c3034; padding-top: 10px;padding-bottom: 10px;}
@@ -44,7 +49,6 @@ pre{font-size:16px;font-family:Arial, Helvetica, sans-serif;margin-bottom: 0px;p
 .red {
   background: #bd0306;
   padding-right:10px;
-  
 }
 
 .yellow {

@@ -176,7 +176,7 @@ if(isset($_POST['Pesquisar'])):
   
   while($contagem = mysqli_fetch_array($consulta_sql_index)):
   if($contagem['ESTADO'] == 1):
-        echo "<div class='colorido1 redireciona'>".
+        echo "<div class='controle-view estado-com-troca redireciona'>".
         '<div class="container">'.
         '<div class="row row-cols-7">'.
         '<div class="col">'.$contagem['ID'].'</div>'.
@@ -188,7 +188,7 @@ if(isset($_POST['Pesquisar'])):
         echo '</div>'.'</div>'.'</div>'.'<br/>';
   
   elseif($contagem['ESTADO'] == 2):
-        echo "<div class='colorido2 redireciona'>".
+        echo "<div class='controle-view estado-sem-troca redireciona'>".
         '<div class="container">'.
         '<div class="row row-cols-7">'.
         '<div class="col">'.$contagem['ID'].'</div>'.
@@ -200,7 +200,7 @@ if(isset($_POST['Pesquisar'])):
         echo '</div>'.'</div>'.'</div>'.'<br/>';
         
   elseif($contagem['ESTADO'] == 3):
-        echo "<div class='colorido3 redireciona'>".
+        echo "<div class='controle-view estado-bonificado redireciona'>".
         '<div class="container">'.
         '<div class="row row-cols-7">'.
         '<div class="col">'.$contagem['ID'].'</div>'.
@@ -212,7 +212,7 @@ if(isset($_POST['Pesquisar'])):
         echo '</div>'.'</div>'.'</div>'.'<br/>';
    
 elseif($contagem['ESTADO'] == 4):
-  echo "<div class='colorido4 redireciona'>".
+  echo "<div class='controle-view estado-desabilitado redireciona'>".
   '<div class="container">'.
   '<div class="row row-cols-7">'.
   '<div class="col">'.$contagem['ID'].'</div>'.

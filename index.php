@@ -6,7 +6,7 @@
 <link href="../diretorio_html/imagens/detective-16.png">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/config.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
+<link href="css/color.css" rel="stylesheet">
 <title>Sistema Detective Supplier</title>
 </head>
 <body>
@@ -19,7 +19,7 @@ if(!isset($_SESSION['ID'])):
   $nome = $_SESSION['nome'];
   $ID   = $_SESSION['ID'];
 
-  ?>
+?>
 
 <script type="module">
 // Import the functions you need from the SDKs you need
@@ -51,15 +51,15 @@ const analytics = getAnalytics(app);
 <br/>
 <h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
 <span class="meuspan">PREVENÇÃO DE PERDAS</span>
-<br>
+<br/>
 <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
-<input type="search" name="pesquisar"id="pesquisar_estilo" placeholder="Nome do fornecedor" autofocus="on"> 
-<input type="submit" name="Botao-Pesquisar" class="botao-estilo" value="Pesquisar">
+    <input type="search" name="pesquisar"id="pesquisar_estilo" placeholder="Nome do fornecedor" autofocus="on"> 
+    <input type="submit" name="Botao-Pesquisar" class="botao-estilo" value="Pesquisar">
 </form>
 
-<br>
+<br/>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 210px; margin-top:-80px">
-  <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi me-2" width="32" height="32">
     
 <path style="fill:#000000; stroke:none;" d="M0 0L0 32L32 32L32 0L0 0z"/>
@@ -70,14 +70,12 @@ const analytics = getAnalytics(app);
     <span class="fs-4">PAINEL</span>
   </a>
   <hr>
-  <ul class=" nav nav-pills flex-column mb-auto">
-    <li class="selecionar dropdown-item">
+  <ul class="nav nav-pills flex-column mb-auto">
+      <li class="selecionar dropdown-item">
       <a href="cadastro.php" class="nav-link text-white" aria-current="page">
-        <svg class="bi me-2" width="32" height="32">
-
-
-        <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+      <svg class="bi me-2" width="32" height="32">
+      <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
+      fill="#000000" stroke="none">
 <path d="M86 305 c-8 -8 -19 -15 -25 -15 -13 0 -14 -20 -2 -38 5 -9 24 -12 57
 -10 57 4 70 26 32 58 -28 24 -42 25 -62 5z"/>
 <path d="M12 268 c-16 -16 -16 -200 0 -216 7 -7 34 -12 61 -12 40 0 54 5 73
@@ -91,14 +89,12 @@ fill="#000000" stroke="none">
 15 9 25 0 45 -16 37 -68 37 -84 0z"/>
 </g>
 
-
-
-        </svg>
-        Cadastro
+    </svg>
+      Cadastro
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="lista_compradores.php" class="nav-link text-white">
+        <a href="lista_compradores.php" class="nav-link text-white">
         <svg class="bi me-2" width="32" height="32">
 
         <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
@@ -118,7 +114,7 @@ fill="#000000" stroke="none">
       </a>
     </li>
     <li class="selecionar dropdown-item">
-      <a href="lista_fornecedores.php" class="nav-link text-white">
+        <a href="lista_fornecedores.php" class="nav-link text-white">
         <svg class="bi me-2" width="32" height="32">
         <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="none">
@@ -132,22 +128,22 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
 -145 -28 -137 -16 3 5 19 9 35 9 44 0 31 24 -17 32 -21 3 -49 9 -61 13 -22 7
 -23 5 -23 -49z"/>
 </g>
-        </svg>
-        Fornecedores
-      </a>
-    </li>
+  </svg>
+      Fornecedores
+    </a>
+  </li>
   </ul>
   <hr>
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong><?php echo $nome;?></strong>
+          <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong><?php echo $nome;?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-      <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>  
-      <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="login.php">Sair</a></li>
+          <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>  
+          <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="login.php">Sair</a></li>
       </ul>
       </div>
   </div>
@@ -156,21 +152,20 @@ c21 -22 47 -38 59 -38 13 0 29 -9 37 -20 13 -18 16 -16 72 40 58 58 58 60 40
 <br/>
 
 <div class="filtro-index">
-  
- <input type="radio" name="Filtro" value="Nome_Fornecedor" checked> Nome
- <input type="radio" name="Filtro" value="Cod_Barra"> Cod Barras
+    <input type="radio" name="Filtro" value="Nome_Fornecedor" checked> Nome
+    <input type="radio" name="Filtro" value="Cod_Barra"> Cod Barras
 </div>
 <br/>
 <div class="padrao">
-<div class="foo blue">COM TROCA</div>
-<div class="foo yellow">BONIFICADO</div>
-<div class="foo red"> SEM TROCA </div>
-<div class="foo cinza"> INATIVO </div>
+    <div class="foo blue">COM TROCA</div>
+    <div class="foo yellow">BONIFICADO</div>
+    <div class="foo red"> SEM TROCA </div>
+    <div class="foo cinza"> INATIVO </div>
 </div>
 <br>
 <br/>
 <br/>
-<div class='minhaVIEW redireciona'>
+<div class='view-index redireciona'>
 <div class="container">
   <div class="row row-cols-7">
     <div class="col">ID</div>
@@ -197,13 +192,13 @@ if(isset($_POST['Botao-Pesquisar'])):
 //Verifica se retornará o numéro de linhas
 //Verificação util
 if(mysqli_num_rows($consulta_sql_index) == 0 || $pesquisar == ''):
-    echo '<div class="colorido5">'.
+    echo '<div class="controle-view estado-nao-encontrado">'.
    '<pre>      Error, registro não encontrado.</pre>';
   else:
 
 while($contagem = mysqli_fetch_array($consulta_sql_index)):
 if($contagem['ESTADO'] == 1):
-      echo"<div class='colorido1 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
+      echo"<div class='controle-view estado-com-troca redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
       '<div class="container">'.
       '<div class="row row-cols-7">'.
       '<div class="col">'.$contagem['ID'].'</div>'.
@@ -216,7 +211,7 @@ if($contagem['ESTADO'] == 1):
       echo '</div>'.'</div>'.'</div>'.'<br/>';
 
 elseif($contagem['ESTADO'] == 2):
-      echo "<div class='colorido2 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
+      echo "<div class='controle-view estado-sem-troca redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
       '<div class="container">'.
       '<div class="row row-cols-7">'.
       '<div class="col">'.$contagem['ID'].'</div>'.
@@ -229,7 +224,7 @@ elseif($contagem['ESTADO'] == 2):
       echo '</div>'.'</div>'.'</div>'.'<br/>';
       
 elseif($contagem['ESTADO'] == 3):
-      echo "<div class='colorido3 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
+      echo "<div class='controle-view estado-bonificado redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
       '<div class="container">'.
       '<div class="row row-cols-7">'.
       '<div class="col">'.$contagem['ID'].'</div>'.
@@ -242,7 +237,7 @@ elseif($contagem['ESTADO'] == 3):
       echo '</div>'.'</div>'.'</div>'.'<br/>';
 
 elseif($contagem['ESTADO'] == 4):
-      echo "<div class='colorido4 redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
+      echo "<div class='controle-view estado-desabilitado redireciona' onclick='redireciona(`$contagem[ID]`,`$contagem[NOME_FORNECEDOR]`,`$contagem[COMPRADOR]`,`$contagem[ESTADO]`,`$contagem[TROCA_COND]`,`$contagem[RECOLHIMENTO]`,`$contagem[TELA]`,`$contagem[QUEM_RECEBE]`,`$contagem[STATUS_GERAL]`);'>".
       '<div class="container">'.
       '<div class="row row-cols-7">'.
       '<div class="col">'.$contagem['ID'].'</div>'.
@@ -254,7 +249,7 @@ elseif($contagem['ESTADO'] == 4):
       '<div class="col">'.$contagem['QUEM_RECEBE'].'</div>';
       echo '</div>'.'</div>'.'</div>'.'<br/>';
 endif;
-endwhile;
+  endwhile;
 endif; 
 endif;
 ?>

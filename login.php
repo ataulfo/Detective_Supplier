@@ -65,8 +65,8 @@
 session_start();
 require_once 'back-sistema/conexao.php';
 
-$email = $_POST['email'];
-$senha = $_POST['senha'];
+$email = mysqli_escape_string($conectar,$_POST['email']);
+$senha = mysqli_escape_string($conectar,$_POST['senha']);
 $sql   = "select * from usuario where EMAIL='$email' and SENHA = md5($senha)";
 $resultado = mysqli_query($conectar,$sql);
 
