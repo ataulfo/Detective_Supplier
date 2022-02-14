@@ -116,7 +116,7 @@ if(!isset($_SESSION['ID'])):
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
         
-      <li><a class="dropdown-item" href="#">Conta: ADM</a></li>
+      <li><a class="dropdown-item" href="#">Administrador</a></li>
 
       <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>
         <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
@@ -150,8 +150,8 @@ require_once 'back-sistema/conexao.php';
 if(isset($_POST['Adicionar'])):
 
   $NOME                = ucfirst($_POST['NOME']); //OK
-  $EMAIL               = $_POST['EMAIL'];//OK
-  $SENHA               = $_POST['SENHA'];//OK
+  $EMAIL               = mysqli_real_escape_string($conectar,$_POST['EMAIL']);//OK
+  $SENHA               = mysqli_real_escape_string($conectar,$_POST['SENHA']);//OK
 
 if($NOME == '' || $EMAIL == '' || $SENHA == ''):
 echo '<script>alert("Aviso os campos não podem ser vazios");</script>';
