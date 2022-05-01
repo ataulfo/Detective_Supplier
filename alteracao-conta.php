@@ -13,40 +13,24 @@
 
 
 <?php
+
 require_once 'back-sistema/conexao.php';
 
 $ID                  = $_POST['ID'];
-$NOME_FORNECEDOR     = ucfirst($_POST['FORNECEDOR']); //OK
-$STATUS_RECOLHIMENTO = $_POST["STATUS_RECOLHIMENTO"]; //OK
-$TROCA_COND          = filter_input(INPUT_POST,'TROCA_MEDIANTE',FILTER_SANITIZE_SPECIAL_CHARS);//OK
-$STATUS_TELA         = $_POST['STATUS_TELA']; //OK
-$COMPRADOR           = $_POST["COMPRADOR"];//OK
-$ESTADO_TROCA        = $_POST["ESTADO_TROCA"];//OK
-$QUEM_RECEBE         = $_POST['QUEM_RECEBE'];//OK
-$STATUS_GERAL        = $_POST['STATUS_GERAL'];
+$NOME                = ucfirst($_POST['NOME']); //OK
+$EMAIL               = $_POST["EMAIL"]; //OK
+$SENHA               = $_POST['SENHA'];
+$TIPO                = $_POST['conta']; //OK
+$STATUS              = $_POST["TIPO_STATUS"];//OK
 
-if(isset($_POST['Alterar'])):
-  
-  if($ESTADO_TROCA == 1):
-    $OPERACAO = 'Loja / Avaria';
-    elseif($ESTADO_TROCA == 2 || $ESTADO_TROCA == 4):
-    $OPERACAO = 'Quebra Operacional';
-    elseif($ESTADO_TROCA == 3):
-    $OPERACAO = 'Quebra Bonificada';
-    endif;
-
-      if($STATUS_GERAL == 'Inativo'):
-        $OPERACAO = 'Quebra Operacional';
-        $ESTADO_TROCA = '4';
-
-      endif;
-  if(empty($_POST['TROCA_MEDIANTE'])):
-  $TROCA_COND = 'Nenhum';
-  endif;
-
-
-$sql_alterar = "UPDATE Fornecedor_lista SET `NOME_FORNECEDOR`='$NOME_FORNECEDOR',`RECOLHIMENTO`='$STATUS_RECOLHIMENTO',`TROCA_COND`='$TROCA_COND', `TELA`='$STATUS_TELA', `COMPRADOR`='$COMPRADOR', `QUEM_RECEBE`='$QUEM_RECEBE', `ESTADO`='$ESTADO_TROCA',`STATUS_GERAL`='$STATUS_GERAL',`OPERACAO`='$OPERACAO' where `ID`='$ID'";
+if(isset($_POST['Adicionar'])):
+if($SENHA == ''): 
+$sql_alterar = "UPDATE conta SET `NOME`='$NOME',`EMAIL`='$EMAIL', `TIPO`='$TIPO', `STATUS`='$STATUS'  where `ID`='$ID'";
 $Inserir_dados = mysqli_query($conectar,$sql_alterar);
+else:
+$sql_alterar = "UPDATE conta SET `NOME`='$NOME',`EMAIL`='$EMAIL',`SENHA`=md5($SENHA), `TIPO`='$TIPO', `STATUS`='$STATUS'  where `ID`='$ID'";
+$Inserir_dados = mysqli_query($conectar,$sql_alterar);
+
 
 if($Inserir_dados == true):
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
@@ -56,7 +40,7 @@ if($Inserir_dados == true):
   echo '<div class="alert alert-success d-flex align-items-center" role="alert">';
   echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>';
   echo '<div>';
-  echo "Dados do fornecedor $NOME_FORNECEDOR alterado com sucesso!";
+  echo "Dados da conta $NOME alterado com sucesso!";
   echo '</div>';
   echo '</div>';
 else:
@@ -67,12 +51,12 @@ else:
   echo '<div class="alert alert-danger d-flex align-items-center" role="alert">';
   echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
   echo '<div>';
-  echo "Erro na alteração do fornecedor $NOME_FORNECEDOR";
+  echo "Erro na alteração da conta $NOME";
   echo '</div>';
   echo '</div>';
 
 endif;
-
+endif;
 elseif(isset($_POST['Deletar'])):
   $sql_deletar = "DELETE FROM Fornecedor_lista where `ID`='$ID'";
   $Deletar_dados = mysqli_query($conectar,$sql_deletar);

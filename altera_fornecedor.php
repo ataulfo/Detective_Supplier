@@ -9,7 +9,18 @@
 <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
 </head>
 <body>
-    
+<?php
+session_start();
+if(!isset($_SESSION['ID'])):
+  header('Location:login.php');
+  endif;
+  $nome = $_SESSION['nome'];
+  $ID   = $_SESSION['ID'];
+  if($_SESSION['Tipo'] != 'Admin'):
+    header('Location:index2.php');
+  endif;
+
+  ?>
 <form id="form-altera_dados" action="resposta-alteracao.php" method="post">
 <fieldset>
 <legend>Alterar dados do Fornecedor</legend><br/><br/>

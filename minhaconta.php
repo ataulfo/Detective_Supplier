@@ -157,7 +157,7 @@ if($NOME == '' || $EMAIL == '' || $SENHA == ''):
 echo '<script>alert("Aviso os campos não podem ser vazios");</script>';
 else:
 
-    $sql = "UPDATE usuario SET `NOME`='$NOME', `EMAIL`='$EMAIL', `SENHA`=md5($SENHA) WHERE `ID`='$ID'";
+    $sql = "UPDATE conta SET `NOME`='$NOME', `EMAIL`='$EMAIL', `SENHA`=md5($SENHA) WHERE `ID`='$ID'";
     $alterar_conta = mysqli_query($conectar,$sql);
 if($alterar_conta == true):
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';

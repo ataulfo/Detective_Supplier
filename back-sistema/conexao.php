@@ -5,7 +5,7 @@
 $server   = 'localhost';
 $usuario  = 'ataulfo';
 $senha    = '123321';
-$bd       = 'Banco_teste';
+$bd       = 'Banco_producao';
 $conectar = mysqli_connect($server,$usuario,$senha,$bd);
 
 ?>

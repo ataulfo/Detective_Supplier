@@ -67,16 +67,30 @@ require_once 'back-sistema/conexao.php';
 
 $email = mysqli_escape_string($conectar,$_POST['email']);
 $senha = mysqli_escape_string($conectar,$_POST['senha']);
-$sql   = "select * from usuario where EMAIL='$email' and SENHA = md5($senha)";
+$sql   = "select * from conta where EMAIL='$email' and SENHA = md5($senha)";
 $resultado = mysqli_query($conectar,$sql);
 
 if(isset($_POST['logar'])):
+
+
 if(mysqli_num_rows($resultado)== 1):
     $conta =  mysqli_fetch_array($resultado);
-    $_SESSION['ID']    = $conta[0];
-    $_SESSION['nome']  = $conta[1];
-    $_SESSION['email'] = $conta[2];
+    $_SESSION['ID']     =  $conta[0];
+    $_SESSION['nome']   =  $conta[1];
+    $_SESSION['email']  =  $conta[2];
+    $_SESSION['Tipo']   =  $conta[4];
+    $_SESSION['Status'] =  $conta[5];
+
+if($_SESSION['Status'] == 'Ativo'):
+    if($_SESSION['Tipo'] == 'Admin'):
     header('Location:index.php');
+    else:
+      header('Location:index2.php');
+    endif;
+  else:
+    echo '<script>alert("Sua conta está inativa")</script>';
+  endif;
+
 else:
   echo '<script>alert("Senha ou email Não correspondem");</script>';
 endif;

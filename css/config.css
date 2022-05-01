@@ -8,7 +8,7 @@ input[type="email"],[type="password"]{margin-left:510px}
 #texto-titulo{margin:3px;padding-top: 2px;}
 #pesquisar_estilo{text-transform: capitalize;}
 #listar-comprador{margin-left: 970px;margin-top:-220px;background:linear-gradient(#ccc,rgb(34, 34, 34));width:150px;font-weight: bold;border-radius: 15px;color:white;}
-
+h4{color:#191d24; margin:355px;margin-top:-385px;text-align:center;}
 #form-altera_dados{margin-left: 100px;margin-bottom: 640px;font-weight: bold;}
 #input-ID-alterar{width:50px;font-weight: bold;color:black}
 #span-altera_dados{margin-left:488px;margin-bottom:240px;   padding:4px;background:linear-gradient(rgb(148, 147, 147),rgb(10, 9, 9));color:white;font-weight: bold;}
