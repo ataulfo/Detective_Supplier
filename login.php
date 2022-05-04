@@ -80,6 +80,7 @@ if(mysqli_num_rows($resultado)== 1):
     $_SESSION['email']  =  $conta[2];
     $_SESSION['Tipo']   =  $conta[4];
     $_SESSION['Status'] =  $conta[5];
+    $_SESSION['Foto']   =  $conta[6];
 
 if($_SESSION['Status'] == 'Ativo'):
     if($_SESSION['Tipo'] == 'Admin'):

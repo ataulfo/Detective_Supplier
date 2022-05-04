@@ -16,10 +16,14 @@ session_start();
 if(!isset($_SESSION['ID'])):
   header('Location:login.php');
   endif;
-  $nome = $_SESSION['nome'];
-  $ID   = $_SESSION['ID'];
-  $TIPO = $_SESSION['Tipo'];
-
+  $nome        = $_SESSION['nome'];
+  $ID          = $_SESSION['ID'];
+  $TIPO        = $_SESSION['Tipo'];
+  $FOTO_PERFIL = $_SESSION['Foto'];
+  
+  if($TIPO != 'Admin'):
+    header('Location:index2.php');
+  endif;
 ?>
 
 <br/>
@@ -72,7 +76,8 @@ if(!isset($_SESSION['ID'])):
   <hr>
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
+          <img alt="" width="32" height="32" class="rounded-circle me-2" src="<?php echo $FOTO_PERFIL; ?>"/>
+          
           <strong><?php echo $nome;?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
@@ -95,9 +100,9 @@ if(!isset($_SESSION['ID'])):
 </div>
 <br/>
 <div class="padrao">
-    <div class="foo blue">COM TROCA</div>
+    <div class="foo blue">TROCA/DEV</div>
     <div class="foo yellow">BONIFICADO</div>
-    <div class="foo red"> SEM TROCA </div>
+    <div class="foo red"> QUEBRA OP </div>
     <div class="foo cinza"> INATIVO </div>
 </div>
 <br>

@@ -18,6 +18,10 @@ if(!isset($_SESSION['ID'])):
   endif;
   $nome = $_SESSION['nome'];
   $ID   = $_SESSION['ID'];
+  $FOTO_PERFIL = $_SESSION['Foto'];
+  if($_SESSION['Tipo'] != 'Admin'):
+    header('Location:index2.php');
+  endif;
 
   ?>
 <br>
@@ -70,7 +74,8 @@ if(!isset($_SESSION['ID'])):
   <hr>
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
+      <img alt="" width="32" height="32" class="rounded-circle me-2" src="<?php echo $FOTO_PERFIL; ?>"/>
+      
         <strong><?php echo $nome?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">

@@ -23,11 +23,6 @@ if(!isset($_SESSION['ID'])):
   endif;
 
   ?>
-
-
-
-
-
       <form id="form-altera_dados" action="alteracao-conta.php" method="post">
             <fieldset>
           <legend>Alterar conta</legend><br/><br/>
@@ -56,7 +51,8 @@ if(!isset($_SESSION['ID'])):
           </select>
           <br/>
           <br/>
-          <input type="submit" value="Alterar" name="Adicionar" class="botao-estilo">
+          <input type="submit" value="Deletar" name="Deletar" class="botao-deletar-estilo">
+          <input type="submit" value="Alterar" name="Adicionar" class="botao-alterar-estilo">
           </fieldset>
           </form>
 

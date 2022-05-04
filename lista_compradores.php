@@ -16,9 +16,14 @@ session_start();
 if(!isset($_SESSION['ID'])):
   header('Location:login.php');
   endif;
-  $nome = $_SESSION['nome'];
-  $ID   = $_SESSION['ID'];
-
+  $nome        = $_SESSION['nome'];
+  $ID          = $_SESSION['ID'];
+  $TIPO        = $_SESSION['Tipo'];
+  $FOTO_PERFIL = $_SESSION['Foto'];
+  
+  if($TIPO != 'Admin'):
+    header('Location:index2.php');
+  endif;
   ?>
     <br/>
 <h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
@@ -70,12 +75,14 @@ if(!isset($_SESSION['ID'])):
   <hr>
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
+      <img alt="" width="32" height="32" class="rounded-circle me-2" src="<?php echo $FOTO_PERFIL; ?>"/>
+          
         <strong><?php echo $nome;?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        
+      <li><a class="dropdown-item"><strong><?php echo $TIPO;?></strong></a></li>
       <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>
+      <li><a class="dropdown-item" href="gerenciador.php">Gerenciador de contas</a></li>
         <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="login.php">Sair</a></li>
@@ -103,7 +110,7 @@ if(!isset($_SESSION['ID'])):
         $visualizar_comprador = mysqli_query($conectar,$comando_sql);
         while($contador = mysqli_fetch_array($visualizar_comprador)):
           if($contador['STATUS'] == 'Ativo' ):
-          echo  "<tr onclick='funcao_alterar_conta(`$contador[ID]`,`$contador[NOME]`,`$contador[TELEFONE]`,`$contador[EMAIL]`,`$contador[ATIVO]`,`$contador[SITUACAO]`);'>"
+          echo  "<tr onclick='funcao_alterar_comprador(`$contador[ID]`,`$contador[NOME]`,`$contador[TELEFONE]`,`$contador[EMAIL]`,`$contador[STATUS]`,`$contador[SITUACAO]`);'>"
         .'<th scope="row">'.$contador['ID'].'</th>'
         ."<td class='situacao-ativo'>".$contador['NOME'].'</td>'
         .'<td class="situacao-ativo">'.$contador['TELEFONE'].'</td>'.
@@ -112,13 +119,13 @@ if(!isset($_SESSION['ID'])):
          '<td class="situacao-ativo">'.$contador['SITUACAO'].'</td>'.
          '</tr>';
          elseif($contador['STATUS'] == 'Inativo'):
-          echo  "<tr onclick='funcao_alterar_conta(`$contador[ID]`,`$contador[NOME]`,`$contador[TELEFONE]`,`$contador[EMAIL]`,`$contador[ATIVO]`,`$contador[SITUACAO]`);'>"
+          echo  "<tr onclick='funcao_alterar_comprador(`$contador[ID]`,`$contador[NOME]`,`$contador[TELEFONE]`,`$contador[EMAIL]`,`$contador[STATUS]`,`$contador[SITUACAO]`);'>"
           .'<th scope="row">'.$contador['ID'].'</th>'
         .'<td class="situacao-inativo">'.$contador['NOME'].'</td>'
         .'<td class="situacao-inativo">'.$contador['TELEFONE'].'</td>'.
         '<td class="situacao-inativo">'.$contador['EMAIL'].'</td>'.
-          '<td class="situacao-ativo">'.$contador['STATUS'].'</td>'.
-          '<td class="situacao-ativo">'.$contador['SITUACAO'].'</td>'.
+          '<td class="situacao-inativo">'.$contador['STATUS'].'</td>'.
+          '<td class="situacao-inativo">'.$contador['SITUACAO'].'</td>'.
            '</tr>';
           endif;
         endwhile;

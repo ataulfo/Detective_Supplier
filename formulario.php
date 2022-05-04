@@ -8,7 +8,7 @@
 <link href="css/config.css" rel="stylesheet">
 <link href="css/formulario.css" rel="stylesheet" >
 <link rel="stylesheet" type="text/css" href="css/color.css" media="screen"/>
-    <title>Lista de compradores</title>
+    <title>Cadastro de contas</title>
 </head>
 <body>
 <?php
@@ -17,12 +17,14 @@ session_start();
 if(!isset($_SESSION['ID'])):
   header('Location:login.php');
   endif;
-  $nome = $_SESSION['nome'];
-  $ID   = $_SESSION['ID'];
-  if($_SESSION['Tipo'] != 'Admin'):
+  $NOME        = $_SESSION['nome'];
+  $ID          = $_SESSION['ID'];
+  $TIPO        = $_SESSION['Tipo'];
+  $FOTO_PERFIL = $_SESSION['Foto'];
+  
+  if($TIPO != 'Admin'):
     header('Location:index2.php');
   endif;
-
   ?>
     <br/>
 <h3 id="texto-titulo">Bem vindo ao Detective Supplier <img src="imagens/detective-64.png"></h3>
@@ -74,11 +76,11 @@ if(!isset($_SESSION['ID'])):
   <hr>
   <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://avatars.githubusercontent.com/u/13712902?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong><?php echo $nome;?></strong>
+        <img src="<?php echo $FOTO_PERFIL;?>" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong><?php echo $NOME;?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        
+      <li><a class="dropdown-item"><strong><?php echo $TIPO;?></strong></a></li>
       <li><a class="dropdown-item" href="formulario.php">Cadastrar conta</a></li>
         <li><a class="dropdown-item" href="minhaconta.php">Configurações</a></li>
         <li><hr class="dropdown-divider"></li>
@@ -92,10 +94,15 @@ if(!isset($_SESSION['ID'])):
     <div id="cadastro">
     <fieldset>
         <legend>CADASTRO ANALISTA</legend>
-    <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
+    <form action="<?php $_SERVER['PHP_SELF'];?>" method="POST" enctype="multipart/form-data">
     
-            [Imagem de perfil]<br/><input type="file" name="arquivo"accept="image/png" id="defoto"><br/><br/>
-            <?php echo $_FILES['arquivo'];?>
+    <div class="m-b-sm">
+      
+    <input type=hidden name="defotoa" value="<?php echo $defotom; ?>">
+     <label title="Alterar Foto" for="defotom" class="btn btn-success" value="<?php echo $defotom; ?>">
+            [Imagem de perfil]<br/><input type="file" name="foto" accept="image/*" id="foto"><br/><br/>
+            
+      </div>
 
 
 Nome:<br/><input  type="text"      maxlength="20" name="nome" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSWYTKÇUVXZabcdefghijlmnopqrysktwuvxzç' ']+$"><br/>
@@ -111,18 +118,37 @@ Tipo de conta:<br/>
 <input type="submit" name="botao-cadastrar" value="Cadastrar">
     </form>
     </fieldset>
-</div>
 
+
+
+
+
+    </div>
 <?php
-require_once 'back-sistema/conexao.php';
+    require_once 'back-sistema/conexao.php';
 
 if(isset($_POST['botao-cadastrar'])):
 
-  $NOME   = ucfirst($_POST['nome']); //OK
-  $EMAIL  = $_POST['email'];//OK
-  $SENHA  = $_POST['senha'];
-  $TIPO   = $_POST['opcao-conta'];
-  $STATUS = 'Ativo';
+  $NOME    = ucfirst($_POST['nome']); //OK
+  $EMAIL   = $_POST['email'];//OK
+  $SENHA   = $_POST['senha'];
+  $TIPO    = $_POST['opcao-conta'];
+  $STATUS  = 'Ativo';
+  $defoto  = "";
+
+  $uploaddir    = $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/Projeto_detective_supplier/perfil/';
+  $uploadfile   = $uploaddir  . basename($_FILES['foto']['name']);
+  $nome_arquivo = basename($_FILES['foto']['name']);
+
+
+
+   if(move_uploaded_file($_FILES['foto']['tmp_name'], $uploadfile)):
+
+      $defoto  = 'perfil/'.$nome_arquivo;
+  else:
+       $defoto = 'imagens/utilizador.png';
+  endif;
+
   if($TIPO == '1'):
     $TIPO = 'Admin';
   else:
@@ -134,7 +160,7 @@ $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao)
 
 //Caso não houver registro executará a condição
 if(mysqli_num_rows($verifica_registro_existente) == 0 && $NOME != ''):
-    $sql = "INSERT INTO conta(`NOME`, `EMAIL`, `SENHA`,`TIPO`,`STATUS`)VALUES('$NOME', '$EMAIL', md5($SENHA),'$TIPO','$STATUS');";
+    $sql = "INSERT INTO conta(`NOME`, `EMAIL`, `SENHA`,`TIPO`,`STATUS`,`FOTO`)VALUES('$NOME', '$EMAIL', md5($SENHA),'$TIPO','$STATUS','$defoto');";
     $Inserir_dados = mysqli_query($conectar,$sql);
 if($Inserir_dados == true):
   echo '<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>';
@@ -145,7 +171,7 @@ if($Inserir_dados == true):
   echo '<div class="alert alert-success d-flex align-items-center" role="alert">';
   echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>';
   echo '<div>';
-  echo "Dados do fornecedor $NOME adicionados com sucesso!";
+  echo "Dados da conta $NOME adicionados com sucesso!";
   echo '</div>';
   echo '</div>';
 
@@ -158,11 +184,11 @@ elseif($Inserir_dados == false || empty($Inserir_dados)):
   echo '<div class="alert alert-danger d-flex align-items-center" role="alert">';
   echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
   echo '<div>';
-  echo "Erro na gravação do fornecedor $NOME campo nome vazio ou erro na conexão";
+  echo "Erro na gravação do $NOME campo nome vazio ou erro na conexão";
   echo '</div>';
   echo '</div>'; 
 endif;
-elseif($NOME_FORNECEDOR == ''):
+elseif($NOME == ''):
   echo '<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>.<br/>';
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
   echo '<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">';
@@ -171,7 +197,7 @@ elseif($NOME_FORNECEDOR == ''):
   echo '<div class="alert alert-danger d-flex align-items-center" role="alert">';
   echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
   echo '<div>';
-  echo "Erro na gravação do fornecedor $NOME campo nome vazio ou erro na conexão";
+  echo "Erro na gravação do $NOME campo nome vazio ou erro na conexão";
   echo '</div>';
   echo '</div>';
 else:
@@ -183,13 +209,11 @@ else:
   echo '<div class="alert alert-warning d-flex align-items-center" role="alert" autofocus="on">';
   echo '<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
   echo '<div>';
-  echo "Aviso o fornecedor $NOME já se encontra registrado!";
+  echo "Aviso o $NOME já se encontra registrado!";
   echo '</div>';
   echo '</div>';
-
 endif;
 endif;
-
 ?>
 </body>
 <script src="js/arquivo.js"></script>
