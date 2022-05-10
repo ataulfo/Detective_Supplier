@@ -84,6 +84,8 @@ else:
 endif;
 endif;
 elseif(isset($_POST['Deletar'])):
+  
+  $ID = $_POST['ID'];
   $sql_deletar = "DELETE FROM conta where `ID`='$ID'";
   $Deletar_dados = mysqli_query($conectar,$sql_deletar);
     

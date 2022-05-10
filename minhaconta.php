@@ -16,8 +16,9 @@ session_start();
 if(!isset($_SESSION['ID'])):
   header('Location:login.php');
   endif;
-  $nome = $_SESSION['nome'];
+  $NOME = $_SESSION['nome'];
   $ID   = $_SESSION['ID'];
+  $EMAIL = $_SESSION['email'];
   $FOTO_PERFIL = $_SESSION['Foto'];
   if($_SESSION['Tipo'] != 'Admin'):
     header('Location:index2.php');
@@ -76,7 +77,7 @@ if(!isset($_SESSION['ID'])):
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
       <img alt="" width="32" height="32" class="rounded-circle me-2" src="<?php echo $FOTO_PERFIL; ?>"/>
       
-        <strong><?php echo $nome?></strong>
+        <strong><?php echo $NOME?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
         
@@ -92,14 +93,14 @@ if(!isset($_SESSION['ID'])):
 
 <br/>
 
-<form class="input-cadastro" action="<?php $SERVER['PHP_SELF'];?>" method="post">
+<form class="input-cadastro" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
   <fieldset>
 <legend>Alterar conta</legend><br/><br/>
 
-Nome:  <input type="text" name="NOME" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSWYTKÇUVXZabcdefghijlmnopqrysktwuvxzç' ']+$">
+Nome:  <input type="text" name="NOME" autofocus="on"  pattern="[ABCDEFGHIJLMNOPQRSWYTKÇUVXZabcdefghijlmnopqrysktwuvxzç' ']+$" value='<?php echo $NOME;?>'>
 <br/>
 <br/>
-Email: <input type="email" name="EMAIL" style="margin-left:-1px">
+Email: <input type="email" name="EMAIL" style="margin-left:-1px" value='<?php echo $EMAIL;?>'>
 <br/>
 <br/>
 Senha: <input type="password" name="SENHA" style="margin-left:-1px">

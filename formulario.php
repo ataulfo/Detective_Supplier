@@ -136,7 +136,7 @@ if(isset($_POST['botao-cadastrar'])):
   $STATUS  = 'Ativo';
   $defoto  = "";
 
-  $uploaddir    = $_SERVER['CONTEXT_DOCUMENT_ROOT'].'/Projeto_detective_supplier/perfil/';
+  $uploaddir    = $_SERVER['DOCUMENT_ROOT'].'/Projeto_detective_supplier/perfil/';
   $uploadfile   = $uploaddir  . basename($_FILES['foto']['name']);
   $nome_arquivo = basename($_FILES['foto']['name']);
 
