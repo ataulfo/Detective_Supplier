@@ -109,8 +109,8 @@ Comprador: <select name="COMPRADOR">
 <br/>
 <br/>
 Estado: <select name="ESTADO_TROCA" id="estado_troca">
-<option name="COM_TROCA"   value="1">COM TROCA</option>
-<option name="SEM_TROCA"   value="2">SEM TROCA</option>
+<option name="COM_TROCA"   value="1">TROCA/DEV</option>
+<option name="SEM_TROCA"   value="2">QUEBRA OP</option>
 <option name="EXCESSAO"    value="3">BONIFICAÇÃO</option> 
    
 </select>

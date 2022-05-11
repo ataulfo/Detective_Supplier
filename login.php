@@ -50,7 +50,7 @@
       <label for="floatingInput">Email</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" name="senha" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" name="senha" placeholder="Password" maxlength="14">
       <label for="floatingPassword">Senha</label>
     </div>
 

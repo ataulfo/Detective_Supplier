@@ -27,27 +27,27 @@ if(!isset($_SESSION['ID'])):
 
 ?>
 <h3>Alterar dados do comprador</h3>
-<form id="form-altera_dados" action="" method='post'><br/>
-ID: <input type="text"id="input-ID-alterar"><br/><br/>
-NOME: <input type="text" name="nome" id='nome'><br/><br/>
-Telefone: <input type="text" name="telefone" id='telefone'><br/><br/>
-Email:     <input type="text" name="email" id='email'><br/><br/>
+<form id="form-altera_dados" action="alterar_comprador.php" method='post'><br/>
+ID: <input type="text"id="input-ID-alterar" name="ID"><br/><br/>
+NOME: <input type="text" name="NOME" id='NOME'><br/><br/>
+Telefone: <input type="text" name="TELEFONE" id='TELEFONE'><br/><br/>
+Email:     <input type="text" name="EMAIL" id='EMAIL'><br/><br/>
 Ativo:
- <select name="status" id='status'>
+ <select name="STATUS" id='STATUS'>
  <option value="Ativo">SIM</option>
  <option value="Inativo">NAO</option> 
  </select>   
  <br/>
  <br/>
-Situação: <select name="situacao" id='situacao'>
+Situação: <select name="SITUACAO" id='SITUACAO'>
 <option value="FERIAS">FERIAS</option>
-<option value="OPERCAO_SIM">EM OPERAÇÃO</option>
+<option value="EM OPERAÇÃO">EM OPERAÇÃO</option>
 <option value="AVISO">AVISO</option>
 <option value="SUSPENSO">SUSPENSO</option>
 </select>     
 <br/><br/>
 <input type="submit" value="Deletar" name="Deletar" class="botao-deletar-estilo">
-<input type="submit" name="alterar" value="alterar" class="botao-alterar-estilo">
+<input type="submit" name="Alterar" value="Alterar" class="botao-alterar-estilo">
 </form>
 <script>
 
@@ -57,21 +57,21 @@ Situação: <select name="situacao" id='situacao'>
             //console.log(meuarray)
             
             document.getElementById('input-ID-alterar').value = meuarray[0]
-            document.getElementById('nome').value             = meuarray[1]
-            document.getElementById('telefone').value         = meuarray[2]
-            document.getElementById('email').value            = meuarray[3]
-            document.getElementById('status').value           = meuarray[4]
-            document.getElementById('situacao').value         = meuarray[5]
+            document.getElementById('NOME').value             = meuarray[1]
+            document.getElementById('TELEFONE').value         = meuarray[2]
+            document.getElementById('EMAIL').value            = meuarray[3]
+            document.getElementById('STATUS').value           = meuarray[4]
+            document.getElementById('SITUACAO').value         = meuarray[5]
             
-            let STATUS = document.getElementsByName('status')
+            let STATUS = document.getElementsByName('STATUS')
             if(meuarray[4].toString() == "Inativo"){
               STATUS[1].checked = true
             }else{
               STATUS[0].checked = true  
             }
 
-            let TIPO = document.getElementsByName('situacao')
-            if(meuarray[5].toString() == "EM OPERACAO"){
+            let TIPO = document.getElementsByName('SITUACAO')
+            if(meuarray[5].toString() == "EM OPERAÇÃO"){
               TIPO[1].checked = true
             }else{
               TIPO[0].checked = true  
