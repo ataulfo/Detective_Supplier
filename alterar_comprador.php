@@ -52,6 +52,7 @@ if($Alterar_dados):
 elseif(isset($_POST['Deletar'])):
   
   $ID = $_POST['ID'];
+  $NOME          = $_POST['NOME'];
   $sql_deletar = "DELETE FROM Comprador where `ID`='$ID'";
   $Deletar_dados = mysqli_query($conectar,$sql_deletar);
     
