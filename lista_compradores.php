@@ -105,6 +105,7 @@ if(!isset($_SESSION['ID'])):
         
 <?php
         require_once 'back-sistema/conexao.php';
+        
 
         $comando_sql = 'SELECT * FROM Comprador ORDER BY `STATUS`';
         $visualizar_comprador = mysqli_query($conectar,$comando_sql);
@@ -129,6 +130,7 @@ if(!isset($_SESSION['ID'])):
            '</tr>';
           endif;
         endwhile;
+      
 
 ?>
     </tbody>

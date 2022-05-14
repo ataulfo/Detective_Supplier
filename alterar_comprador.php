@@ -12,7 +12,7 @@
 <?php
 
 require_once 'back-sistema/conexao.php';
-
+require_once 'lista_compradores.php';
 if(isset($_POST['Alterar'])):
   
 $ID            = $_POST['ID'];
@@ -36,6 +36,7 @@ if($Alterar_dados):
     echo "Dados do comprador $NOME alterado com sucesso!";
     echo '</div>';
     echo '</div>';
+
   else:
     echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
     echo '<symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">';
@@ -53,7 +54,7 @@ elseif(isset($_POST['Deletar'])):
   
   $ID = $_POST['ID'];
   $NOME          = $_POST['NOME'];
-  $sql_deletar = "DELETE FROM Comprador where `ID`='$ID'";
+  $sql_deletar   = "DELETE FROM Comprador where `ID`='$ID'";
   $Deletar_dados = mysqli_query($conectar,$sql_deletar);
     
 if($Deletar_dados):

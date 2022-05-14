@@ -13,6 +13,10 @@
 <?php
 
 session_start();
+require_once 'back-sistema/conexao.php';
+$sql = 'SELECT NOME FROM Comprador';
+$listar = mysqli_query($conectar,$sql);
+
 if(!isset($_SESSION['ID'])):
   header('Location:login.php');
   endif;
@@ -21,6 +25,8 @@ if(!isset($_SESSION['ID'])):
   $TIPO        = $_SESSION['Tipo'];
   $FOTO_PERFIL = $_SESSION['Foto'];
   
+
+
   if($TIPO != 'Admin'):
     header('Location:index2.php');
   endif;
@@ -97,12 +103,10 @@ if(!isset($_SESSION['ID'])):
 <div class="posicao-filtro">
 <form action="<?php $_SERVER['PHP_SELF'];?>" method="post">
 Comprador: <select name="COMPRADOR" id="Status_Comprador">
-<option name="COMP00"    value=""></option>
-<option name="COMP01"    value="Marcio">MARCIO</option>
-<option name="COMP02"    value="Helton Jhon">HELTON JHON</option>
-<option name="COMP03"    value="Leonardo">LEONARDO</option>
-<option name="COMP04"    value="Pablo">PABLO</option>
-<option name="COMP05"    value="Thays">THAYS</option>
+  <?php foreach($listar as $NOMES){
+echo "<option value=".$NOMES['NOME'].">".$NOMES['NOME']."</option>";
+  }
+?>
 </select>
 <input type="submit" class="botao-estilo" name="Pesquisar" value="Pesquisar" onclick="nome_comprador();">
 </form>
@@ -127,11 +131,10 @@ require_once 'back-sistema/conexao.php';
 
 if(isset($_POST['Pesquisar'])):
     $COMPRADOR = $_POST['COMPRADOR'];
-    //"<script>nome</script>" = $COMPRADOR;
     $sql = "SELECT * FROM Fornecedor_lista where COMPRADOR ='$COMPRADOR' order by ESTADO"; 
     $consulta_sql_index = mysqli_query($conectar,$sql);
     if(mysqli_num_rows($consulta_sql_index) == 0):
-      echo '<div class="colorido5">'.
+      echo '<div class="controle-view estado-nao-encontrado">'.
      '<pre>      Error, registro não encontrado.</pre>';
     else:
 

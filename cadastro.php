@@ -12,6 +12,10 @@
 <body>
 <?php
 session_start();
+
+require_once 'back-sistema/conexao.php';
+$SQL = 'SELECT NOME FROM Comprador';
+$listar = mysqli_query($conectar,$SQL);
 if(!isset($_SESSION['ID'])):
   header('Location:login.php');
   endif;
@@ -94,17 +98,18 @@ if(!isset($_SESSION['ID'])):
 
 <form class="input-cadastro" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
   <fieldset>
+
+<a href="www.google.com" class="btn btn-success" style="margin-left:480px;">Comprador+</button></a>
 <legend>Cadastro Fornecedor</legend><br/><br/>
 
 Fornecedor: <input type="text" name="FORNECEDOR" maxlength="25" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSWYTKÇUVXZabcdefghijlmnopqrysktwuvxzç' ']+$">
 <br/>
 <br/>
 Comprador: <select name="COMPRADOR">
-<option name="COMP01"    value="Marcio">MARCIO</option>
-<option name="COMP02"    value="Helton Jhon">HELTON JHON</option>
-<option name="COMP03"    value="Leonardo">LEONARDO</option>
-<option name="COMP04"    value="Pablo">PABLO</option>
-<option name="COMP05"    value="Thays">THAYS</option>
+<?php foreach($listar as $NOMES){
+echo "<option value=".$NOMES['NOME'].">".$NOMES['NOME']."</option>";
+  }
+  ?>
 </select>
 <br/>
 <br/>
