@@ -65,13 +65,13 @@
 session_start();
 require_once 'back-sistema/conexao.php';
 
-$email = mysqli_escape_string($conectar,$_POST['email']);
-$senha = mysqli_escape_string($conectar,$_POST['senha']);
-$sql   = "select * from conta where EMAIL='$email' and SENHA = md5($senha)";
-$resultado = mysqli_query($conectar,$sql);
 
 if(isset($_POST['logar'])):
-
+  $email = mysqli_escape_string($conectar,$_POST['email']);
+  $senha = mysqli_escape_string($conectar,$_POST['senha']);
+  $sql   = "select * from conta where EMAIL='$email' and SENHA = md5($senha)";
+  $resultado = mysqli_query($conectar,$sql);
+  
 
 if(mysqli_num_rows($resultado)== 1):
     $conta =  mysqli_fetch_array($resultado);

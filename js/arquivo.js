@@ -7,3 +7,8 @@ window.open('alterarconta.php?id='+ID+'&nome='+NOME+'&email='+EMAIL+'&conta='+CO
 function funcao_alterar_comprador(ID,NOME,TELEFONE,EMAIL,STATUS,SITUACAO){
 window.open('atualizar_comprador.php?id='+ID+'&nome='+NOME+'&telefone='+TELEFONE+'&email='+EMAIL+'&status='+STATUS+'&situacao='+SITUACAO+'',"DescriptiveWindowName","left=100,top=100,width=650,height=560");
 }
+
+function botao_cadastro_comprador(){
+window.open('cadastro_comprador.php',"DescriptiveWindowName", "left=100,top=100,width=650,height=560")
+
+}

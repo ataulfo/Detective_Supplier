@@ -1,2 +1,0 @@
-# Detective_Supplier
-

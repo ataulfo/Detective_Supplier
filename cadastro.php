@@ -99,7 +99,7 @@ if(!isset($_SESSION['ID'])):
 <form class="input-cadastro" action="<?php $_SERVER['PHP_SELF'];?>" method="post">
   <fieldset>
 
-<a href="www.google.com" class="btn btn-success" style="margin-left:480px;">Comprador+</button></a>
+<a class="btn btn-success" style="margin-left:480px;"onclick="botao_cadastro_comprador();">Comprador+</button></a>
 <legend>Cadastro Fornecedor</legend><br/><br/>
 
 Fornecedor: <input type="text" name="FORNECEDOR" maxlength="25" autofocus="on" pattern="[ABCDEFGHIJLMNOPQRSWYTKÇUVXZabcdefghijlmnopqrysktwuvxzç' ']+$">
@@ -193,7 +193,7 @@ $verifica_registro_existente = mysqli_query($conectar,$sql_consulta_verificacao)
 if(mysqli_num_rows($verifica_registro_existente) == 0 && $NOME_FORNECEDOR != ''):
     $sql = "INSERT INTO Fornecedor_lista(`NOME_FORNECEDOR`, `RECOLHIMENTO`, `TROCA_COND`, `TELA`, `COMPRADOR`, `QUEM_RECEBE`, `ESTADO`,`STATUS_GERAL`,`OPERACAO`)VALUES('$NOME_FORNECEDOR', '$STATUS_RECOLHIMENTO', '$TROCA_COND', '$STATUS_TELA', '$COMPRADOR','$QUEM_RECEBE','$ESTADO_TROCA','$STATUS_GERAL','$OPERACAO');";
     $Inserir_dados = mysqli_query($conectar,$sql);
-if($Inserir_dados == true):
+if($Inserir_dados):
   echo '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">';
   echo '<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">';
   echo '<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>';
