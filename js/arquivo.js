@@ -9,6 +9,6 @@ window.open('atualizar_comprador.php?id='+ID+'&nome='+NOME+'&telefone='+TELEFONE
 }
 
 function botao_cadastro_comprador(){
-window.open('cadastro_comprador.php',"DescriptiveWindowName", "left=100,top=100,width=650,height=560")
+window.open('cadastro_comprador.php',"DescriptiveWindowName", "left=100,top=100,width=650,height=560");
 
 }
