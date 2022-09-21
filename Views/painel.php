@@ -1,6 +1,8 @@
 <?php
 include 'valida_entrada.php';
 include 'header.php';
+
+
 ?>
 
 
@@ -38,6 +40,8 @@ include 'header.php';
 </div>
 
 <?php
+
+
 if(isset($_POST['Botao-Pesquisar'])):
   require_once '../back-sistema/conexao.php';    
   $pesquisar          = strip_tags(mysqli_escape_string($conectar,htmlspecialchars($_POST['pesquisar'])));

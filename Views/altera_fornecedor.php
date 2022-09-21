@@ -12,6 +12,7 @@
 <?php
   include 'valida_entrada.php';
   include '../back-sistema/conexao.php';
+  
   $SQL_lista_comprador  = 'SELECT NOME FROM Comprador WHERE NOT id=1;';
   $listar               = mysqli_query($conectar,$SQL_lista_comprador);
   mysqli_close($conectar);

@@ -34,7 +34,8 @@
 
 
 <?php
-  session_start();
+  session_start();                 
+
   if(isset($_POST['logar'])):
 
     require_once '../back-sistema/conexao.php';
@@ -47,7 +48,8 @@
     $comparar_senha = $resultado['SENHA'];
     mysqli_close($conectar); 
 
-    if(password_verify($senha,$comparar_senha)):                  
+    if(password_verify($senha,$comparar_senha)): 
+    
       $_SESSION['ID']     =  $resultado['ID'];
       $_SESSION['NOME']   =  $resultado['NOME'];
       $_SESSION['EMAIL']  =  $resultado['EMAIL'];
